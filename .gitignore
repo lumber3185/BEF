@@ -3,3 +3,6 @@ cmake_install.cmake
 CMakeFiles/
 CMakeCache.txt
 src/CMakeFiles/
+.cproject
+.project
+.settings/
