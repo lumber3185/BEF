@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string.h>
 
-#include "Terrain.h"
-#include "FileManager.h"
+#include "forge/terrain/Terrain.h"
+#include "forge/filemanager/FileManager.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef arme_h
 #define arme_h
 
-#include "entite.h"
+#include "../entite/entite.h"
 
 class arme : public entite{
 	private:

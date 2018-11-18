@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#include "entite.h"
+#include "../entite/entite.h"
 
 class obstacle : public entite {
 	private:

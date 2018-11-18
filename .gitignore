@@ -1,1 +1,5 @@
 #add files or folders
+cmake_install.cmake
+CMakeFiles/
+CMakeCache.txt
+src/CMakeFiles/

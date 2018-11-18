@@ -7,8 +7,8 @@
 
 using namespace std;
 
-#include "Terrain.h"
-#include "entite.h"
+#include "../terrain/Terrain.h"
+#include "../entite/entite.h"
 
 class FileManager {
 	private:

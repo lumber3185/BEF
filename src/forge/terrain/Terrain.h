@@ -4,9 +4,9 @@
 #include <iostream>
 #include <string.h>
 
-#include "entite.h" 
-#include "obstacle.h"
-#include "arme.h"
+#include "../entite/entite.h" 
+#include "../obstacle/obstacle.h"
+#include "../arme/arme.h"
 
 using namespace std;
 

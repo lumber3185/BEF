@@ -5,8 +5,8 @@
 using namespace std;
 
 #include "FileManager.h"
-#include "Terrain.h"
-#include "entite.h"
+#include "../terrain/Terrain.h"
+#include "../entite/entite.h"
 
 FileManager :: FileManager(string FilePath) : path(FilePath) {};
 FileManager :: ~FileManager() {};
