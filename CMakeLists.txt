@@ -16,7 +16,13 @@ add_library(entite STATIC src/forge/entite/entite.h src/forge/entite/entite.cpp)
 add_library(arme STATIC src/forge/arme/arme.h src/forge/arme/arme.cpp)
 add_library(filemanager STATIC src/forge/filemanager/FileManager.h src/forge/filemanager/FileManager.cpp)
 add_library(terrain STATIC src/forge/terrain/Terrain.h src/forge/terrain/Terrain.cpp)
-add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obstacle.cpp)
+add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obstacle.cpp) 
+
+#linkage des libraries
+target_link_libraries(arme PUBLIC entite)
+target_link_libraries(obstacle PUBLIC entite)
+target_link_libraries(terrain PUBLIC entite obstacle arme)
+target_link_libraries(filemanager PUBLIC entite terrain)
 
 #exec final
 #NE PAS TOUCHER
