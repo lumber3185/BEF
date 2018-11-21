@@ -6,3 +6,4 @@ src/CMakeFiles/
 .cproject
 .project
 .settings/
+*.code-workspace
