@@ -24,6 +24,9 @@ Menu::Menu(float width, float height){
     menu[2].setString("Test");
     menu[2].setPosition(sf::Vector2f(width/2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
 
+    //add more menus here and change MAX_NUMBER_OF_ITEMS in "menu.hpp"
+
+    //first highlighted menu is always menu 0
     selectItemIndex = 0;
 
 }
@@ -55,5 +58,4 @@ void Menu::draw(sf::RenderWindow &window){
 }
 
 Menu::~Menu(){
-
 };

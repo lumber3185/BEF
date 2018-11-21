@@ -15,8 +15,12 @@ private:
 public:
     Menu(float width, float height);
     void draw(sf::RenderWindow &window);
+ 
+    //Deplacement vers le haut dans le menu
     void MoveUp();
+    //Deplacement vers le bas dans le menu
     void MoveDown();
+    //Renvoi de l'item selectionne
     int GetPressedItem();
     ~Menu();
 };

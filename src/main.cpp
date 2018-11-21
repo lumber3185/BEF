@@ -24,7 +24,7 @@ int main(){
 		sf::Event event;
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
-				switch (event.key.code){
+				switch (event.key.code){ // A simplifier?
 					case sf::Keyboard::Up:
 						menu.MoveUp();
 						break;
