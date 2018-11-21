@@ -22,6 +22,8 @@ public:
     void MoveDown();
     //Renvoi de l'item selectionne
     int GetPressedItem();
+
+    void event_handler(sf::Event event);
     ~Menu();
 };
 

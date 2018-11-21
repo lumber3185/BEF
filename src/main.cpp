@@ -24,32 +24,14 @@ int main(){
 		sf::Event event;
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
-				switch (event.key.code){ // A simplifier?
-					case sf::Keyboard::Up:
-						menu.MoveUp();
-						break;
-					case sf::Keyboard::Down:
-						menu.MoveDown();
-						break;
-					case sf::Keyboard::Return:
-						switch (menu.GetPressedItem()){
-							case 0:
-								std::cout << "Play button has been pressed" << std::endl;
-								break;
-							case 1:
-								std::cout << "Create button has been pressed" << std::endl;
-								break;
-							case 2:
-								std::cout << "Test button has been pressed" << std::endl;
-								break;
-						}
-				}
+				menu.event_handler(event);
 			}
 			if(event.type == sf::Event::Closed)
 			window.close();
 		}
 		//nettoyage fenetre
 		window.clear(sf::Color::Black);
+
 		//draw here
 		menu.draw(window);
 

@@ -57,5 +57,34 @@ void Menu::draw(sf::RenderWindow &window){
         }
 }
 
+void Menu::event_handler(sf::Event event){
+    switch (event.key.code){
+        case sf::Keyboard::Z :
+            MoveUp();
+            break;
+		case sf::Keyboard::Up :
+			MoveUp();
+			break;
+        case sf::Keyboard::S :
+            MoveDown();
+            break;
+		case sf::Keyboard::Down:
+			MoveDown();
+			break;
+		case sf::Keyboard::Return:
+			switch (GetPressedItem()){
+			    case 0:
+		            std::cout << "Play button has been pressed" << std::endl;
+					break;
+				case 1:
+					std::cout << "Create button has been pressed" << std::endl;
+					break;
+				case 2:
+					std::cout << "Test button has been pressed" << std::endl;
+					break;
+			}
+	}
+}
+
 Menu::~Menu(){
 };
