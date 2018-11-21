@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named bef
+
+# Build rule for target.
+bef: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bef
+.PHONY : bef
+
+# fast build rule for target.
+bef/fast:
+	$(MAKE) -f CMakeFiles/bef.dir/build.make CMakeFiles/bef.dir/build
+.PHONY : bef/fast
+
+#=============================================================================
 # Target rules for targets named arme
 
 # Build rule for target.
@@ -122,19 +135,6 @@ arme: cmake_check_build_system
 arme/fast:
 	$(MAKE) -f CMakeFiles/arme.dir/build.make CMakeFiles/arme.dir/build
 .PHONY : arme/fast
-
-#=============================================================================
-# Target rules for targets named terrain
-
-# Build rule for target.
-terrain: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 terrain
-.PHONY : terrain
-
-# fast build rule for target.
-terrain/fast:
-	$(MAKE) -f CMakeFiles/terrain.dir/build.make CMakeFiles/terrain.dir/build
-.PHONY : terrain/fast
 
 #=============================================================================
 # Target rules for targets named filemanager
@@ -176,17 +176,30 @@ obstacle/fast:
 .PHONY : obstacle/fast
 
 #=============================================================================
-# Target rules for targets named bef
+# Target rules for targets named terrain
 
 # Build rule for target.
-bef: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bef
-.PHONY : bef
+terrain: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 terrain
+.PHONY : terrain
 
 # fast build rule for target.
-bef/fast:
-	$(MAKE) -f CMakeFiles/bef.dir/build.make CMakeFiles/bef.dir/build
-.PHONY : bef/fast
+terrain/fast:
+	$(MAKE) -f CMakeFiles/terrain.dir/build.make CMakeFiles/terrain.dir/build
+.PHONY : terrain/fast
+
+#=============================================================================
+# Target rules for targets named menu
+
+# Build rule for target.
+menu: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 menu
+.PHONY : menu
+
+# fast build rule for target.
+menu/fast:
+	$(MAKE) -f CMakeFiles/menu.dir/build.make CMakeFiles/menu.dir/build
+.PHONY : menu/fast
 
 src/forge/arme/arme.o: src/forge/arme/arme.cpp.o
 
@@ -323,6 +336,33 @@ src/forge/terrain/Terrain.cpp.s:
 	$(MAKE) -f CMakeFiles/terrain.dir/build.make CMakeFiles/terrain.dir/src/forge/terrain/Terrain.cpp.s
 .PHONY : src/forge/terrain/Terrain.cpp.s
 
+src/gui/menu/menu.o: src/gui/menu/menu.cpp.o
+
+.PHONY : src/gui/menu/menu.o
+
+# target to build an object file
+src/gui/menu/menu.cpp.o:
+	$(MAKE) -f CMakeFiles/menu.dir/build.make CMakeFiles/menu.dir/src/gui/menu/menu.cpp.o
+.PHONY : src/gui/menu/menu.cpp.o
+
+src/gui/menu/menu.i: src/gui/menu/menu.cpp.i
+
+.PHONY : src/gui/menu/menu.i
+
+# target to preprocess a source file
+src/gui/menu/menu.cpp.i:
+	$(MAKE) -f CMakeFiles/menu.dir/build.make CMakeFiles/menu.dir/src/gui/menu/menu.cpp.i
+.PHONY : src/gui/menu/menu.cpp.i
+
+src/gui/menu/menu.s: src/gui/menu/menu.cpp.s
+
+.PHONY : src/gui/menu/menu.s
+
+# target to generate assembly for a file
+src/gui/menu/menu.cpp.s:
+	$(MAKE) -f CMakeFiles/menu.dir/build.make CMakeFiles/menu.dir/src/gui/menu/menu.cpp.s
+.PHONY : src/gui/menu/menu.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -357,13 +397,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... bef"
 	@echo "... edit_cache"
 	@echo "... arme"
-	@echo "... terrain"
 	@echo "... filemanager"
 	@echo "... entite"
 	@echo "... obstacle"
-	@echo "... bef"
+	@echo "... terrain"
+	@echo "... menu"
 	@echo "... src/forge/arme/arme.o"
 	@echo "... src/forge/arme/arme.i"
 	@echo "... src/forge/arme/arme.s"
@@ -379,6 +420,9 @@ help:
 	@echo "... src/forge/terrain/Terrain.o"
 	@echo "... src/forge/terrain/Terrain.i"
 	@echo "... src/forge/terrain/Terrain.s"
+	@echo "... src/gui/menu/menu.o"
+	@echo "... src/gui/menu/menu.i"
+	@echo "... src/gui/menu/menu.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
