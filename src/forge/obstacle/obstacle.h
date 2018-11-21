@@ -9,12 +9,13 @@ using namespace std;
 
 class obstacle : public entite {
 	private:
-		string type;
+		string typeObst;
 	public:
 		obstacle();
-		obstacle(string t);
+		obstacle(string TypeObst);
+		obstacle(string TypeObst, int f);
 		~obstacle();
-		string getType();
+		string getTypeObst();
 };
 
 #endif

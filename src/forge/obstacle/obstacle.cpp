@@ -3,10 +3,24 @@
 
 using namespace std;
 
+#include "../entite/entite.h"
 #include "obstacle.h"
 
-obstacle :: obstacle() : type("none yet") {};
-obstacle :: obstacle(string t) : type(t) {};
+obstacle :: obstacle() {
+	entite("obstacle", -1);
+	typeObst = "";
+};
+
+obstacle :: obstacle(string TypeObst) {
+	entite("obstacle", -1);
+	typeObst = "";
+};
+
+obstacle :: obstacle(string TypeObst, int f){
+	entite("obstacle", f);
+	typeObst = TypeObst;
+}
+
 obstacle :: ~obstacle() {};
 
-string obstacle :: getType() { return type; };
+string obstacle :: getTypeObst() { return typeObst; };
