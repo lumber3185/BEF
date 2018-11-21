@@ -11,7 +11,7 @@ sudo apt install libsfml-dev
 ```
 ## CMAKE
 ```
-sudo apt install cmake
+sudo apt install cmake cmake-gui
 ```
 Aller dans **BEF/** 
 ```
