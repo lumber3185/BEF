@@ -16,10 +16,15 @@ obstacle :: obstacle(string TypeObst) {
 	typeObst = "";
 };
 
-obstacle :: obstacle(string TypeObst, int f){
+obstacle :: obstacle(string TypeObst, int f) {
 	entite("obstacle", f);
 	typeObst = TypeObst;
 }
+
+obstacle :: obstacle(obstacle &copie) {
+	entite(copie.getType(), copie.getForce());
+	typeObst = copie.getTypeObst();
+};
 
 obstacle :: ~obstacle() {};
 
