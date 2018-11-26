@@ -24,7 +24,9 @@ int main(){
 		sf::Event event;
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
-				menu.event_handler(event);
+				if(menu.is_on){
+					menu.event_handler(event);
+				}
 			}
 			if(event.type == sf::Event::Closed)
 			window.close();
@@ -33,7 +35,9 @@ int main(){
 		window.clear(sf::Color::Black);
 
 		//draw here
-		menu.draw(window);
+		if(menu.is_on){
+			menu.draw(window);
+		}
 
 		window.display();
 

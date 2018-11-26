@@ -11,9 +11,10 @@ private:
     int selectItemIndex;
     sf::Font font;
     sf::Text menu[MAX_NUMBER_OF_ITEMS];
-
+    
 public:
     Menu(float width, float height);
+    bool is_on;
     void draw(sf::RenderWindow &window);
  
     //Deplacement vers le haut dans le menu

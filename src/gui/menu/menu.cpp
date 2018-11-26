@@ -8,7 +8,7 @@ Menu::Menu(float width, float height){
         std::cerr << "Missing ttf file";
         exit(1);
     }
-
+    this->is_on = 1;
     
     menu[0].setFont(font);
     menu[0].setFillColor(sf::Color::Red);
@@ -82,13 +82,16 @@ void Menu::event_handler(sf::Event event){
 			switch (GetPressedItem()){
 			    case 0:
 		            std::cout << "Play button has been pressed" << std::endl;
+                    this->is_on = 0;
 					break;
 				case 1:
 					std::cout << "Create button has been pressed" << std::endl;
+                    this->is_on = 0;
 					break;
 				case 2:
 					std::cout << "Test button has been pressed" << std::endl;
-					break;
+					this->is_on = 0;
+                    break;
 			}
 	}
 }
