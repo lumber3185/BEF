@@ -7,20 +7,23 @@ using namespace std;
 #include "obstacle.h"
 
 obstacle :: obstacle() {
-	entite("obstacle", -1);
+	type = "obstacle";
+	force = 0;
 	typeObst = "";
 };
 
-obstacle :: obstacle(string TypeObst) {
-	entite("obstacle", -1);
-	typeObst = "";
+obstacle :: obstacle(string TObst) {
+	type = "obstacle";
+	typeObst = TObst;
 };
 
 obstacle :: obstacle(string TypeObst, int f){
-	entite("obstacle", f);
+	type = "obstacle";
+	force = f;
 	typeObst = TypeObst;
 }
 
 obstacle :: ~obstacle() {};
 
 string obstacle :: getTypeObst() { return typeObst; };
+string obstacle :: getType() { return type;}

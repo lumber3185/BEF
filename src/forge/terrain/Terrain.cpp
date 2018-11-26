@@ -9,25 +9,16 @@ using namespace std;
 #include "../obstacle/obstacle.h"
 
 Terrain::Terrain() {
-	this->SizeX = 0; this->SizeY = 0;
-	this->grille = NULL;
+	SizeX = SizeY = 0;
 };
 
 Terrain::Terrain(int x, int y) {
 	SizeX = x; SizeY = y;
 	
 	// allocation dynamique
-	grille = new entite * [x];
+	grille = new contenu * [x];
 	for(int i = 0; i < x; i++){
-		grille[i] = new entite[y];
-	}
-	
-	// tous les objets sont des entités de force 0 -> sol
-	entite e(0);
-	for(int i = 0; i < x; i++){
-		for(int j = 0; j < y; j++){
-			grille[i][j] = e;
-		}
+		grille[i] = new contenu[y];
 	}
 };
 
@@ -38,27 +29,53 @@ Terrain::~Terrain(){
 };
 
 entite& Terrain :: getObst(int i, int j){
-	return grille[i][j];
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille[i][j].occupied) return grille[i][j].obst;
+};
+
+entite& Terrain :: getArme(int i, int j){
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille [i][j].occupied) return grille[i][j].weapon;
 };
 
 int Terrain :: getX(){ return SizeX; };
 int Terrain :: getY(){ return SizeY; };
 
-void Terrain :: ajoutObstacle(entite& e, int i, int j){
-	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-		grille[i][j] = e;
+void Terrain :: ajoutObstacle(obstacle& o, int i, int j){
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille[i][j].occupied == 0) {
+		grille[i][j].obst = o;
+		grille[i][j].occupied = 1;
 	}
 };
 
 void Terrain :: retireObstacle(int i, int j){
-	if(i < SizeX && i > 0 && j < SizeY && j > 0) grille[i][j].setForce(0);
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille[i][j].occupied == 1) {
+		grille[i][j].obst.setForce(0);
+		grille[i][j].obst.setType("");
+		grille[i][j].occupied = 0;
+	}
 };
+
+void Terrain :: ajoutArme(arme& a, int i, int j){
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille[i][j].occupied == 0) {
+		grille[i][j].weapon = a;
+		grille[i][j].occupied = 1;
+	}
+};
+
+void Terrain :: retireArme(int i, int j){
+	if(i < SizeX && i > 0 && j < SizeY && j > 0 && grille[i][j].occupied == 1) {
+		grille[i][j].weapon.setForce(0);
+		grille[i][j].weapon.setType("");
+		grille[i][j].occupied = 0;
+	}
+}
 
 ostream& operator<<(ostream& flux, Terrain& t){
 	int cptsol = 0;
+	cout << "Caractéristiques du terrain -affiche tous les objets comme s'ils étaient des obstacles voir Terrain.h pour explication du probleme \n \non a progressé je vous jure lol \n\n";
+	flux << "Dimensions " << t.SizeX << " " << t.SizeY << endl << "Liste d'objets : \n";
 	for(int i = 0; i < t.getX(); i++){
 		for(int j = 0; j < t.getY(); j++){
-			if(t.getObst(i,j).getForce() != 0){
+			if(t.grille[i][j].occupied != 0){
 				flux << i << " " << j << " " << t.getObst(i,j).getForce() << " " << t.getObst(i,j).getType() << "\n";
 			}
 			else cptsol++;

@@ -16,6 +16,7 @@ class obstacle : public entite {
 		obstacle(string TypeObst, int f);
 		~obstacle();
 		string getTypeObst();
+		string getType();
 };
 
 #endif

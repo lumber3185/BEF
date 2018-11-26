@@ -8,9 +8,8 @@ using namespace std;
 
 class entite {
 	protected:
-	// si la force est de 0, l'entité est une entité nulle on a affaire à du sol
 		int force;
-		string type = "entite";
+		string type;
 	public:
 		entite();
 		entite(int f);
@@ -19,6 +18,7 @@ class entite {
 		void subirDegats();
 		int getForce();
 		string getType();
+		void setType(string t);
 		void setForce(int f);
 };
 

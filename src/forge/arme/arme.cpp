@@ -7,17 +7,20 @@ using namespace std;
 #include "arme.h"
 
 arme :: arme(){
-	entite("arme", -1);
+	type = "arme";
+	force = -1;
 	portee = 0;
 };
 
 arme :: arme(int p) {
-	entite("arme", -1);
+	type = "arme";
+	force = -1;
 	portee = p;
 };
 
 arme :: arme(int p, int f){
-	entite("arme", f);
+	type = "arme";
+	force = f;
 	portee = p;
 };
 
