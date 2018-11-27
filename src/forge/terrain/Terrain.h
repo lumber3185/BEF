@@ -17,12 +17,19 @@ class Terrain {
 		int SizeX, SizeY;
 		vector< vector< shared_ptr<entite> > > grille;
 	public:
+		template<class T>
+		void ajoutEntite(T& nouv, int i, int j) {
+			if(i < SizeX && i > 0 && j < SizeY && j > 0) {
+				grille[i][j].reset(new T(nouv));
+			}
+		};
+
+		template<class T>
+		T& getEntite(int x, int y) { return grille[x][y]; };
+
 		Terrain(int SizeX, int SizeY);
 		~Terrain();
-		template<class T>
-		void ajoutEntite(T& nouv, int x, int y);
 		void retireEntite(int x, int y);
-		entite& getEntite(int x, int y);
 		int getX();
 		int getY();
 		friend ostream& operator<<(ostream& flux, Terrain& t);
