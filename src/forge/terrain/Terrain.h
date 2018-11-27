@@ -19,7 +19,8 @@ class Terrain {
 	public:
 		Terrain(int SizeX, int SizeY);
 		~Terrain();
-		void ajoutObstacle(obstacle& obst, int x, int y);
+		template<class T>
+		void ajoutEntite(T& nouv, int x, int y);
 		void retireEntite(int x, int y);
 		entite& getEntite(int x, int y);
 		int getX();

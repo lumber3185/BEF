@@ -5,10 +5,10 @@ using namespace std;
 
 #include "entite.h"
 
-entite :: entite(string t = "", int f = 0) : type(t), force(f) {};
-entite :: ~entite() {};
+entite::entite(string t = "", int f = 0) : type(t), force(f) {};
+entite::~entite() {};
 
-string entite :: getType() { return type; };
-int entite :: getForce() { return force; };
-void entite :: setForce(int f) { force = f; };
+string entite::getType() { return type; };
+int entite::getForce() { return force; };
+void entite::setForce(int f) { force = f; };
 

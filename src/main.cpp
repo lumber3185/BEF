@@ -8,8 +8,11 @@
 using namespace std;
 
 int main(){
-	Terrain t(5,5); obstacle o("r", 3);
-	t.ajoutObstacle(o, 2, 2);
+	Terrain t(5,5);
+	obstacle o("r", 3);
+	arme a("pistolet", 2);
+	t.ajoutEntite(o, 2, 2);
+	t.ajoutEntite(a,1,3);
 	cout << t;
 	return 0;
 }

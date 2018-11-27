@@ -15,39 +15,34 @@ Terrain::Terrain(int x = 0, int y = 0): SizeX(x), SizeY(y) {
 	}
 };
 
-Terrain::~Terrain(){
-	for(int i = 0; i < SizeX; i++){
-		for(int j = 0; j < SizeX; j++){
-			grille.pop_back();
-		}
-	}
-};
+Terrain::~Terrain() {};
 
-entite& Terrain :: getEntite(int i, int j){ return *grille[i][j]; };
+entite& Terrain::getEntite(int i, int j){ return *grille[i][j]; };
 
-int Terrain :: getX(){ return SizeX; };
+int Terrain::getX(){ return SizeX; };
 
-int Terrain :: getY(){ return SizeY; };
+int Terrain::getY(){ return SizeY; };
 
-void Terrain :: ajoutObstacle(obstacle &e, int i, int j){
+template<class T>
+void Terrain::ajoutEntite(T& nouv, int i, int j){
 	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-		grille[i][j].reset(new obstacle(e));
+		grille[i][j].reset(new T(nouv));
 	}
 };
 
-void Terrain :: retireEntite(int i, int j){
+void Terrain::retireEntite(int i, int j){
 	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
 		grille[i][j].reset();
 	}
 };
 
 ostream& operator<<(ostream& flux, Terrain &t){
+	flux << "Dimensions du terrain : " << t.SizeX << ", " << t.SizeY << "." << endl;
 	for(int i = 0; i < t.grille.size(); i++) {
 		for(int j = 0; j < t.grille[i].size(); j++) {
 			if(t.grille[i][j] != nullptr)
-				cout << t.grille[i][j]->getType();
+				flux << t.grille[i][j]->getType() << " aux coordonnées : " << i << ", " << j << "." << endl;
 		}
-		cout << endl;
 	}
 	return flux;
 };

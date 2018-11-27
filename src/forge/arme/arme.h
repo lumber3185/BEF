@@ -8,6 +8,7 @@ class arme : public entite{
 		int portee;
 	public:
 		arme(int p, int f);
+		arme(arme& copie);
 		~arme();
 		void subirDegats();
 		int getPortee();

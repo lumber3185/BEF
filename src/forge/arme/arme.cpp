@@ -8,6 +8,8 @@ using namespace std;
 
 arme :: arme(int p = 0, int f = -1): entite("arme", f), portee(p) {};
 
-arme :: ~arme() {};
+arme::arme(arme &copie): entite(copie.getType(), copie.getForce()), portee(copie.getPortee()) {};
 
-int arme :: getPortee() { return portee; };
+arme::~arme() {};
+
+int arme::getPortee() { return portee; };
