@@ -12,6 +12,7 @@
 using namespace std;
 
 int main(){
+<<<<<<< HEAD
 
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
@@ -21,6 +22,11 @@ int main(){
 	arme a("pistolet",5, 2);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
+=======
+	Terrain t(5,5); obstacle o("r", 3); arme a(2);
+	t.ajoutObstacle(o, 2, 2);
+	t.ajoutArme(a, 3, 3);
+>>>>>>> f0ee9e49d98c530d15c0e00ae00ab1b58338c89c
 	cout << t;
 
 	sf::RenderWindow window;

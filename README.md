@@ -1,7 +1,7 @@
 # BEF
 Best Enemies Forever (Bataille en Forêt)
 
-## Install SFML
+## Install SFML (>= 2.5)
 ```
 sudo apt update
 ```

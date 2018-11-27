@@ -9,13 +9,14 @@ using namespace std;
 class entite {
 	protected:
 		int force;
-		string type = "entite";
+		string type;
 	public:
 		entite(string t, int f);
 		~entite();
 		void subirDegats();
 		int getForce();
 		string getType();
+		void setType(string t);
 		void setForce(int f);
 };
 
