@@ -11,8 +11,6 @@ class obstacle : public entite {
 	private:
 		string typeObst;
 	public:
-		obstacle();
-		obstacle(string TypeObst);
 		obstacle(string TypeObst, int f);
 		obstacle(obstacle &copie);
 		~obstacle();

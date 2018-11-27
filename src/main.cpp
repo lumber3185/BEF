@@ -9,7 +9,6 @@ using namespace std;
 
 int main(){
 	Terrain t(5,5); obstacle o("r", 3);
-	// Calmez vous
 	t.ajoutObstacle(o, 2, 2);
 	cout << t;
 	return 0;

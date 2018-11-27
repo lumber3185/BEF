@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string.h>
+#include <vector>
+#include <memory>
 
 #include "../entite/entite.h" 
 #include "../obstacle/obstacle.h"
@@ -13,9 +15,8 @@ using namespace std;
 class Terrain {
 	private:
 		int SizeX, SizeY;
-		entite*** grille;
+		vector< vector< shared_ptr<entite> > > grille;
 	public:
-		Terrain();
 		Terrain(int SizeX, int SizeY);
 		~Terrain();
 		void ajoutObstacle(obstacle& obst, int x, int y);

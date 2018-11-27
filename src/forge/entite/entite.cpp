@@ -5,9 +5,7 @@ using namespace std;
 
 #include "entite.h"
 
-entite :: entite() : force(0) {};
-entite :: entite(int f) : force(f) {};
-entite :: entite(string t, int f) : force(f), type(t){};
+entite :: entite(string t = "", int f = 0) : type(t), force(f) {};
 entite :: ~entite() {};
 
 string entite :: getType() { return type; };

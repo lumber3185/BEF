@@ -1,6 +1,3 @@
-#include <iostream>
-#include <string.h>
-
 using namespace std;
 
 #include "Terrain.h"
@@ -8,14 +5,20 @@ using namespace std;
 #include "../arme/arme.h"
 #include "../obstacle/obstacle.h"
 
-Terrain::Terrain(): SizeX(0), SizeY(0), grille(NULL) {};
-
-Terrain::Terrain(int x, int y): SizeX(x), SizeY(y), grille(NULL)  {};
+Terrain::Terrain(int x = 0, int y = 0): SizeX(x), SizeY(y) {
+	for(int i = 0; i < SizeX; i++) {
+		vector< shared_ptr<entite> >temp;
+		for(int j = 0; j < SizeY; j++) {
+			temp.push_back(shared_ptr<entite>(nullptr));
+		}
+		grille.push_back(temp);
+	}
+};
 
 Terrain::~Terrain(){
 	for(int i = 0; i < SizeX; i++){
 		for(int j = 0; j < SizeX; j++){
-			delete[] grille[i][j];
+			grille.pop_back();
 		}
 	}
 };
@@ -28,28 +31,23 @@ int Terrain :: getY(){ return SizeY; };
 
 void Terrain :: ajoutObstacle(obstacle &e, int i, int j){
 	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-		retireEntite(i,j);
-		grille[i][j] = new obstacle(e);
+		grille[i][j].reset(new obstacle(e));
 	}
 };
 
 void Terrain :: retireEntite(int i, int j){
 	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-		delete grille[i][j];
-		grille[i][j] = NULL;
+		grille[i][j].reset();
 	}
 };
 
-ostream& operator<<(ostream& flux, Terrain& t){
-	int cptsol = 0;
-	for(int i = 0; i < t.getX(); i++){
-		for(int j = 0; j < t.getY(); j++){
-			if(t.getEntite(i,j).getForce() != 0){
-				flux << i << " " << j << " " << t.getEntite(i,j).getForce() << " " << t.getEntite(i,j).getType() << "\n";
-			}
-			else cptsol++;
+ostream& operator<<(ostream& flux, Terrain &t){
+	for(int i = 0; i < t.grille.size(); i++) {
+		for(int j = 0; j < t.grille[i].size(); j++) {
+			if(t.grille[i][j] != nullptr)
+				cout << t.grille[i][j]->getType();
 		}
+		cout << endl;
 	}
-	if(cptsol == t.getX() * t.getY()) flux << "Terrain n'a pas d'objet \n"; 
 	return flux;
 };

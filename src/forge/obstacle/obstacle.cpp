@@ -6,25 +6,9 @@ using namespace std;
 #include "../entite/entite.h"
 #include "obstacle.h"
 
-obstacle :: obstacle() {
-	entite("obstacle", -1);
-	typeObst = "";
-};
+obstacle :: obstacle(string TypeObst = "", int f = -1): entite("obstacle", f), typeObst(TypeObst) {};
 
-obstacle :: obstacle(string TypeObst) {
-	entite("obstacle", -1);
-	typeObst = "";
-};
-
-obstacle :: obstacle(string TypeObst, int f) {
-	entite("obstacle", f);
-	typeObst = TypeObst;
-}
-
-obstacle :: obstacle(obstacle &copie) {
-	entite(copie.getType(), copie.getForce());
-	typeObst = copie.getTypeObst();
-};
+obstacle :: obstacle(obstacle &copie): entite(copie.getType(), copie.getForce()), typeObst(copie.getTypeObst()) {};
 
 obstacle :: ~obstacle() {};
 
