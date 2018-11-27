@@ -6,10 +6,8 @@ using namespace std;
 #include "../entite/entite.h"
 #include "obstacle.h"
 
-obstacle::obstacle(string TypeObst = "", int f = -1): entite("obstacle", f), typeObst(TypeObst) {};
+obstacle::obstacle(string t = "obstacle", int f = -1): entite(t, f) {};
 
-obstacle::obstacle(obstacle &copie): entite(copie.getType(), copie.getForce()), typeObst(copie.getTypeObst()) {};
+obstacle::obstacle(obstacle &copie): entite(copie.getType(), copie.getForce()) {};
 
 obstacle::~obstacle() {};
-
-string obstacle::getTypeObst() { return typeObst; };

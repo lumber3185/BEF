@@ -9,8 +9,8 @@ using namespace std;
 
 int main(){
 	Terrain t(5,5);
-	obstacle o("r", 3);
-	arme a(5, 2);
+	obstacle o("arbre", 3);
+	arme a("pistolet",5, 2);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
 	cout << t;
