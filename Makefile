@@ -124,6 +124,19 @@ bef/fast:
 .PHONY : bef/fast
 
 #=============================================================================
+# Target rules for targets named worldgui
+
+# Build rule for target.
+worldgui: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 worldgui
+.PHONY : worldgui
+
+# fast build rule for target.
+worldgui/fast:
+	$(MAKE) -f CMakeFiles/worldgui.dir/build.make CMakeFiles/worldgui.dir/build
+.PHONY : worldgui/fast
+
+#=============================================================================
 # Target rules for targets named arme
 
 # Build rule for target.
@@ -363,6 +376,33 @@ src/gui/menu/menu.cpp.s:
 	$(MAKE) -f CMakeFiles/menu.dir/build.make CMakeFiles/menu.dir/src/gui/menu/menu.cpp.s
 .PHONY : src/gui/menu/menu.cpp.s
 
+src/gui/worldgui/worldgui.o: src/gui/worldgui/worldgui.cpp.o
+
+.PHONY : src/gui/worldgui/worldgui.o
+
+# target to build an object file
+src/gui/worldgui/worldgui.cpp.o:
+	$(MAKE) -f CMakeFiles/worldgui.dir/build.make CMakeFiles/worldgui.dir/src/gui/worldgui/worldgui.cpp.o
+.PHONY : src/gui/worldgui/worldgui.cpp.o
+
+src/gui/worldgui/worldgui.i: src/gui/worldgui/worldgui.cpp.i
+
+.PHONY : src/gui/worldgui/worldgui.i
+
+# target to preprocess a source file
+src/gui/worldgui/worldgui.cpp.i:
+	$(MAKE) -f CMakeFiles/worldgui.dir/build.make CMakeFiles/worldgui.dir/src/gui/worldgui/worldgui.cpp.i
+.PHONY : src/gui/worldgui/worldgui.cpp.i
+
+src/gui/worldgui/worldgui.s: src/gui/worldgui/worldgui.cpp.s
+
+.PHONY : src/gui/worldgui/worldgui.s
+
+# target to generate assembly for a file
+src/gui/worldgui/worldgui.cpp.s:
+	$(MAKE) -f CMakeFiles/worldgui.dir/build.make CMakeFiles/worldgui.dir/src/gui/worldgui/worldgui.cpp.s
+.PHONY : src/gui/worldgui/worldgui.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -398,6 +438,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... bef"
+	@echo "... worldgui"
 	@echo "... edit_cache"
 	@echo "... arme"
 	@echo "... filemanager"
@@ -423,6 +464,9 @@ help:
 	@echo "... src/gui/menu/menu.o"
 	@echo "... src/gui/menu/menu.i"
 	@echo "... src/gui/menu/menu.s"
+	@echo "... src/gui/worldgui/worldgui.o"
+	@echo "... src/gui/worldgui/worldgui.i"
+	@echo "... src/gui/worldgui/worldgui.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

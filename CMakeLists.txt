@@ -18,6 +18,7 @@ add_library(filemanager STATIC src/forge/filemanager/FileManager.h src/forge/fil
 add_library(terrain STATIC src/forge/terrain/Terrain.h src/forge/terrain/Terrain.cpp)
 add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obstacle.cpp)
 add_library(menu STATIC src/gui/menu/menu.hpp src/gui/menu/menu.cpp)
+add_library(worldgui STATIC src/gui/worldgui/worldgui.hpp src/gui/worldgui/worldgui.cpp)
 
 #exec final
 #NE PAS TOUCHER
