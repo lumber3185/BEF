@@ -13,8 +13,11 @@ using namespace std;
 class FileManager {
 	private:
 		string path;
+		string name;
+		string type;
+
 	public:
-		FileManager(string filepath);
+		FileManager(string filename, string t);
 		~FileManager();
 		Terrain loadTerrain();
 		void saveTerrain(Terrain T);
