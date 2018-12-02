@@ -27,6 +27,10 @@ void Terrain::retireEntite(int i, int j) {
 	}
 };
 
+auto& Terrain::getEntite(int x, int y) {
+	return grille[x][y];
+};
+
 ostream& operator<<(ostream& flux, Terrain &t) {
 	flux << "Dimensions du terrain : " << t.SizeX << ", " << t.SizeY << "." << endl;
 	for(int i = 0; i < t.grille.size(); i++) {
