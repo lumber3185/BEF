@@ -83,7 +83,7 @@ void Menu::event_handler(sf::Event event){
 			    case 0:
 		            std::cout << "Play button has been pressed" << std::endl;
                     //action :
-
+                    
                     this->is_on = 0;
 					break;
 				case 1:

@@ -8,6 +8,7 @@
 #include "forge/terrain/Terrain.h"
 #include "forge/filemanager/FileManager.h"
 #include "gui/menu/menu.hpp"
+#include "gui/worldgui/worldgui.hpp"
 
 using namespace std;
 
@@ -27,6 +28,8 @@ int main(){
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
 
 	Menu menu(window.getSize().x, window.getSize().y);
+	Worldgui worldgui(window.getSize().x, window.getSize().y,t);
+
 
 	while (window.isOpen()){
 		sf::Event event;
@@ -45,6 +48,10 @@ int main(){
 		//draw here
 		if(menu.is_on){
 			menu.draw(window);
+		}
+
+		if(worldgui.is_on){
+			worldgui.draw(window,t);
 		}
 
 		window.display();
