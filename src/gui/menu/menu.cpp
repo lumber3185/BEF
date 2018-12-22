@@ -8,7 +8,7 @@ Menu::Menu(float width, float height){
         std::cerr << "Missing ttf file";
         exit(1);
     }
-    this->is_on = 1;
+    this->is_on = 0;
     
     menu[0].setFont(font);
     menu[0].setFillColor(sf::Color::Red);
