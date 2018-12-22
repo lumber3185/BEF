@@ -27,7 +27,7 @@ void Terrain::retireEntite(int i, int j) {
 	}
 };
 
-auto& Terrain::getEntite(int x, int y) {
+shared_ptr<entite> Terrain::getEntite(int x, int y) {
 	return grille[x][y];
 };
 

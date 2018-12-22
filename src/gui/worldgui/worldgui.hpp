@@ -12,8 +12,8 @@ private:
     int height;
     int sizeoftile_x;
     int sizeoftile_y;
-    sf::Sprite grass1_sprite;
-    sf::Sprite grass2_sprite;
+    sf::Texture &grass1;
+    sf::Texture grass2;
 
 public:
     
@@ -22,9 +22,12 @@ public:
 
 Worldgui(int width, int height, Terrain &t);
 
+
+sf::Texture get_Texture_grass1();
+
 void draw(sf::RenderWindow &window, Terrain t);
 
-void draw_a_tile();
+void draw_a_tile(string type);
 ~Worldgui();
 };
 

@@ -25,7 +25,7 @@ class Terrain {
 			}
 		};
 
-		auto& getEntite(int x, int y);
+		shared_ptr<entite> getEntite(int x, int y);
 
 		Terrain(int SizeX, int SizeY);
 		~Terrain();

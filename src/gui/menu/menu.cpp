@@ -98,6 +98,9 @@ void Menu::event_handler(sf::Event event){
                     
                     this->is_on = 0;
                     break;
+                default:
+                    std::cout << "touche inconnue" << std::endl;
+                    break;
 			}
 	}
 }
