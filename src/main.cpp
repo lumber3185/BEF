@@ -16,10 +16,7 @@ int main(){
 	FileManager f("default", "terrain");
 	f.loadTerrain(t);
 	//cout << "done" << endl;
-
-	//obstacle o("petitrocher",3);
-	//t.ajoutEntite(o,4,4);
-	//cout << t;
+	cout << t;
 
 	return 0;
 }
