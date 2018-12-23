@@ -19,9 +19,18 @@ class FileManager {
 	public:
 		FileManager(string filename, string t);
 		~FileManager();
-		Terrain loadTerrain();
-		void saveTerrain(Terrain T);
-		entite loadEntity(string entitypath);
+		string getName();
+
+		// ouvre un fichier en lecture et renvoit le terrain correspondant
+		void loadTerrain(Terrain& t);
+		
+		// crée un fichier savname correspondant à t, si fichier existant, écrase le fichier existant
+		void saveTerrain(Terrain T, string savname);
+
+		// crée une entité correspondant au fichier en argument
+		obstacle& loadObstacle(string entitypath);
+
+		arme& loadArme(string efilename);
 };
 
 #endif

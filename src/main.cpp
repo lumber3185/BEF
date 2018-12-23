@@ -12,9 +12,14 @@
 using namespace std;
 
 int main(){
-	AppPathInitialize();
-	ifstream f("./default.txt", ios::in);
-	if(f) f.close();
-	else cout << "nope";
+	Terrain t(10,10);
+	FileManager f("default", "terrain");
+	f.loadTerrain(t);
+	//cout << "done" << endl;
+
+	//obstacle o("petitrocher",3);
+	//t.ajoutEntite(o,4,4);
+	//cout << t;
+
 	return 0;
 }
