@@ -21,16 +21,16 @@ class FileManager {
 		~FileManager();
 		string getName();
 
-		// ouvre un fichier en lecture et renvoit le terrain correspondant
+		// ouvre un fichier en lecture et renvoit le terrain correspondant, lance exceptionz
 		void loadTerrain(Terrain& t);
 		
 		// crée un fichier savname correspondant à t, si fichier existant, écrase le fichier existant
 		void saveTerrain(Terrain T, string savname);
 
-		// crée une entité correspondant au fichier en argument
-		obstacle& loadObstacle(string entitypath);
+		// crée une entité correspondant au nom de l'entité en argument, lance des exceptions
+		obstacle& loadObstacle(string entityname);
 
-		arme& loadArme(string efilename);
+		arme& loadArme(string entityname);
 };
 
 #endif
