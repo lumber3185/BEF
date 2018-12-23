@@ -1,0 +1,8 @@
+10 10
+3 3 obstacle petitrocher
+4 5 obstacle petitarbre
+1 1 arme bazooka
+4 7 arme pistolet
+6 6 obstacle grosarbre
+5 6 obstacle grosarbre
+9 9 obstacle grosrocher
