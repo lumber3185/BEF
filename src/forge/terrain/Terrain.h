@@ -21,13 +21,11 @@ class Terrain {
 		template<class T>
 		void ajoutEntite(T& nouv, int i, int j) {
 			if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-				cout << "adding" << endl;
 				grille[i][j].reset(new T(nouv));
-				cout << "added" << endl;
 			}
 		};
 
-		auto& getEntite(int x, int y);
+		shared_ptr<entite> getEntite(int x, int y);
 
 		Terrain(int SizeX, int SizeY);
 		~Terrain();

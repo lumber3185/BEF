@@ -28,9 +28,9 @@ void FileManager::loadTerrain(Terrain& tm){
             int Taillex, Tailley;
             fichier >> Taillex >> Tailley;
             if(Taillex == tm.getX() && Tailley == tm.getY()){
+                string typeEntite, sousType;
                 while(!fichier.eof()){
                     int posX, posY;
-                    string typeEntite, sousType;
                     fichier >> posX >> posY >> typeEntite >> sousType;
                     if(typeEntite == "obstacle"){
                         tm.ajoutEntite(loadObstacle(sousType), posX, posY);
@@ -38,11 +38,13 @@ void FileManager::loadTerrain(Terrain& tm){
                     else if(typeEntite == "arme"){
                         tm.ajoutEntite(loadArme(sousType), posX, posY);
                     }
+                    typeEntite = "";
+                    sousType = "";
                 }
             }
-            else cerr << "trying to load a terrain in an other terrain of a different size";
+            else cerr << "trying to load a terrain into another terrain of a different size";
         }
-        else cerr << "trying to load a terrain with a manager not type terrain \n";
+        else cerr << "trying to load a terrain with a manager not of type terrain \n";
         fichier.close();
         cout << "closed \n";
     }
@@ -55,12 +57,10 @@ obstacle& FileManager::loadObstacle(string efilename){
     if(fichier){
         string t; int f;
         fichier >> t >> f;
-        // statique car sinon à l'issue de la fonction la reference vers o n'existe plus et erreur de segmentation lors de l'ajout de l'obstacle
-        // statique permet d'acceder à l'objet jusqu'à la fin du programme
-        static obstacle o(t,f);
-        return o;
+        obstacle* o = new obstacle(t,f);
+        return *o;
     }
-    else cerr << "Not a filename to an entity\n";    
+    else cerr << "Not a filename to an entity\n";
 }
 
 arme& FileManager::loadArme(string efilename){
@@ -69,10 +69,33 @@ arme& FileManager::loadArme(string efilename){
     if(fichier){
         string t; int p,f;
         fichier >> t >> p >> f;
-        // statique car sinon à l'issue de la fonction la reference vers o n'existe plus et erreur de segmentation lors de l'ajout de l'obstacle
-        // statique permet d'acceder à l'objet jusqu'à la fin du programme
-        static arme a(t,p,f);
-        return a;
+        arme* a = new arme(t,p,f);
+        return *a;
     }
-    else cerr << "Not a filename to an entity\n";    
+    else cerr << "Not a filename to an entity\n";
+}
+
+
+void FileManager::saveTerrain(Terrain T, string savname){
+    string nomdesav = savname + ".txt";
+    string chemin = "./res/sav/terrain/" + nomdesav;
+    ofstream save(chemin);
+    string type;
+
+    if(save){
+        save << T.getX() << " " << T.getY() << endl;
+        for(int i = 0; i < T.getX(); i++){
+            for(int j = 0; j < T.getY(); j++){
+                if(T.getEntite(i,j) != nullptr){
+                    type = T.getEntite(i,j)->getType();
+                    if(type == "pistolet" || type == "bazooka"){
+                        save << i << " " << j << " arme " << type << endl;
+                    }
+                    else{
+                        save << i << " " << j << " obstacle " << type << endl;
+                    }
+                }
+            }
+        }
+    }
 }

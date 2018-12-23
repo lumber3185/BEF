@@ -15,8 +15,9 @@ int main(){
 	Terrain t(10,10);
 	FileManager f("default", "terrain");
 	f.loadTerrain(t);
-	//cout << "done" << endl;
 	cout << t;
+	FileManager saver("default2", "terrain");
+	saver.saveTerrain(t, "default2");
 
 	return 0;
 }
