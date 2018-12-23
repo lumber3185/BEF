@@ -33,22 +33,32 @@ void FileManager::loadTerrain(Terrain& tm){
                     int posX, posY;
                     fichier >> posX >> posY >> typeEntite >> sousType;
                     if(typeEntite == "obstacle"){
-                        tm.ajoutEntite(loadObstacle(sousType), posX, posY);
+                        try{
+                            tm.ajoutEntite(loadObstacle(sousType), posX, posY);
+                        }
+                        catch(const char* msg){
+                            cerr << msg << endl;
+                        }
                     }
                     else if(typeEntite == "arme"){
-                        tm.ajoutEntite(loadArme(sousType), posX, posY);
+                        try{
+                            tm.ajoutEntite(loadArme(sousType), posX, posY);
+                        }
+                        catch(const char* msg){
+                            cerr << msg << endl;
+                        }
                     }
                     typeEntite = "";
                     sousType = "";
                 }
             }
-            else cerr << "trying to load a terrain into another terrain of a different size";
+            else throw "trying to load a terrain into another terrain of a different size";
         }
-        else cerr << "trying to load a terrain with a manager not of type terrain \n";
+        else throw "trying to load a terrain with a manager not of type terrain \n";
         fichier.close();
         cout << "closed \n";
     }
-    else cerr << "Not a filename to a saved 'terrain'\n";
+    else throw "Not a filename to a saved 'terrain'\n";
 }
 
 obstacle& FileManager::loadObstacle(string efilename){
@@ -60,7 +70,7 @@ obstacle& FileManager::loadObstacle(string efilename){
         obstacle* o = new obstacle(t,f);
         return *o;
     }
-    else cerr << "Not a filename to an entity\n";
+    else throw "FileName Incorrect";
 }
 
 arme& FileManager::loadArme(string efilename){
@@ -72,7 +82,7 @@ arme& FileManager::loadArme(string efilename){
         arme* a = new arme(t,p,f);
         return *a;
     }
-    else cerr << "Not a filename to an entity\n";
+    else throw "FileName Incorrect";
 }
 
 

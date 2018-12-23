@@ -13,11 +13,17 @@ using namespace std;
 
 int main(){
 	Terrain t(10,10);
-	FileManager f("default", "terrain");
-	f.loadTerrain(t);
-	cout << t;
-	FileManager saver("default2", "terrain");
-	saver.saveTerrain(t, "default2");
+	FileManager f("defaut", "terrain");
+	try{
+		f.loadTerrain(t);
+		cout << t;
+		FileManager saver("default2", "terrain");
+		saver.saveTerrain(t, "default2");
+	}
+	catch(const char* msg){
+		cerr << msg;
+	}
+
 
 	return 0;
 }
