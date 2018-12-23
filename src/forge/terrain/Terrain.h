@@ -17,6 +17,7 @@ class Terrain {
 		int SizeX, SizeY;
 		vector< vector< shared_ptr<entite> > > grille;
 	public:
+
 		template<class T>
 		void ajoutEntite(T& nouv, int i, int j) {
 			if(i < SizeX && i > 0 && j < SizeY && j > 0) {
@@ -26,8 +27,7 @@ class Terrain {
 			}
 		};
 
-		template<class T>
-		T& getEntite(int x, int y) { return grille[x][y]; };
+		auto& getEntite(int x, int y);
 
 		Terrain(int SizeX, int SizeY);
 		~Terrain();
