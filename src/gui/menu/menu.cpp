@@ -102,6 +102,8 @@ void Menu::event_handler(sf::Event event){
                     std::cout << "touche inconnue" << std::endl;
                     break;
 			}
+        default:
+        break;
 	}
 }
 

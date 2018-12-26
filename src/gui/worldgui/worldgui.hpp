@@ -25,6 +25,8 @@ sf::Texture get_Texture_grass1();
 
 void draw(sf::RenderWindow &window,Terrain T);
 
+void event_handler(sf::Event event);
+
 void draw_a_tile(string type);
 ~Worldgui();
 };

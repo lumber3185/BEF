@@ -22,7 +22,7 @@ int main(){
 	arme a("pistolet",5, 2);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
-	cout << t;
+	cout << t << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
@@ -37,6 +37,9 @@ int main(){
 			if(event.type == sf::Event::KeyReleased){
 				if(menu.is_on){
 					menu.event_handler(event);
+				}
+				if(worldgui.is_on){
+					worldgui.event_handler(event);
 				}
 			}
 			if(event.type == sf::Event::Closed)
