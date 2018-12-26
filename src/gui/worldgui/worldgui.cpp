@@ -5,7 +5,7 @@
 Worldgui::Worldgui(int input_width, int input_height, Terrain T){
     this->height = input_height;
     this->width = input_width;
-    this->is_on = 1;
+    this->is_on = 0;
 
     sizeoftile_x = width/T.getX();
     sizeoftile_y = height/T.getY();
@@ -65,6 +65,10 @@ void Worldgui::event_handler(sf::Event event){
             std::cout << "default key pressed" << std::endl;
             break;
     }
+}
+
+void Worldgui::set_IsOn(bool i){
+    this->is_on = i;
 }
 
 Worldgui::~Worldgui(){

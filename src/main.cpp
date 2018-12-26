@@ -17,7 +17,7 @@ int main(){
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
 
-	Terrain t(5,5);
+	Terrain t(7,5);
 	obstacle o("arbre", 3);
 	arme a("pistolet",5, 2);
 	t.ajoutEntite(o, 2, 2);
@@ -35,11 +35,11 @@ int main(){
 		sf::Event event;
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
-				if(menu.is_on){
-					menu.event_handler(event);
-				}
 				if(worldgui.is_on){
 					worldgui.event_handler(event);
+				}
+				if(menu.is_on){
+					menu.event_handler(event,worldgui);
 				}
 			}
 			if(event.type == sf::Event::Closed)

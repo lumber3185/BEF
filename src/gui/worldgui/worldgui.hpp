@@ -27,6 +27,8 @@ void draw(sf::RenderWindow &window,Terrain T);
 
 void event_handler(sf::Event event);
 
+void set_IsOn(bool i);
+
 void draw_a_tile(string type);
 ~Worldgui();
 };

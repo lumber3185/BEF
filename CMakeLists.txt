@@ -27,6 +27,7 @@ target_link_libraries(arme PUBLIC entite)
 target_link_libraries(obstacle PUBLIC entite)
 target_link_libraries(terrain PUBLIC entite obstacle arme)
 target_link_libraries(filemanager PUBLIC entite terrain)
+target_link_libraries(menu PUBLIC worldgui)
 target_link_libraries(worldgui PUBLIC terrain)
 
 #exec final

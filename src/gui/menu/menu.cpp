@@ -8,7 +8,7 @@ Menu::Menu(float width, float height){
         std::cerr << "Missing ttf file";
         exit(1);
     }
-    this->is_on = 0;
+    this->is_on = 1;
     
     menu[0].setFont(font);
     menu[0].setFillColor(sf::Color::Red);
@@ -64,7 +64,7 @@ void Menu::draw(sf::RenderWindow &window){
         }
 }
 
-void Menu::event_handler(sf::Event event){
+void Menu::event_handler(sf::Event event, Worldgui &worldgui){
     switch (event.key.code){
         case sf::Keyboard::Z :
             MoveUp();
@@ -83,13 +83,12 @@ void Menu::event_handler(sf::Event event){
 			    case 0:
 		            std::cout << "Play button has been pressed" << std::endl;
                     //action :
-                    
                     this->is_on = 0;
+                    worldgui.set_IsOn(1);
 					break;
 				case 1:
 					std::cout << "Create button has been pressed" << std::endl;
                     //action :
-
                     this->is_on = 0;
 					break;
 				case 2:
@@ -102,6 +101,8 @@ void Menu::event_handler(sf::Event event){
                     std::cout << "touche inconnue" << std::endl;
                     break;
 			}
+            break;
+
         default:
         break;
 	}
