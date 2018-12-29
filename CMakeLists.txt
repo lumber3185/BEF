@@ -17,6 +17,7 @@ add_library(arme STATIC src/forge/arme/arme.h src/forge/arme/arme.cpp)
 add_library(filemanager STATIC src/forge/filemanager/FileManager.h src/forge/filemanager/FileManager.cpp)
 add_library(terrain STATIC src/forge/terrain/Terrain.h src/forge/terrain/Terrain.cpp)
 add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obstacle.cpp)
+add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 add_library(menu STATIC src/gui/menu/menu.hpp src/gui/menu/menu.cpp)
 add_library(worldgui STATIC src/gui/worldgui/worldgui.hpp src/gui/worldgui/worldgui.cpp)
 
@@ -25,6 +26,7 @@ target_link_libraries(arme PUBLIC entite)
 target_link_libraries(obstacle PUBLIC entite)
 target_link_libraries(terrain PUBLIC entite obstacle arme)
 target_link_libraries(filemanager PUBLIC entite terrain)
+target_link_libraries(editeur PUBLIC terrain filemanager)
 
 #exec final
 #NE PAS TOUCHER
@@ -32,4 +34,4 @@ add_executable(bef src/main.cpp)
 
 #linkage des modules :
 #ajouter le nom du module de "modules :" apres "PUBLIC"
-target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle) #ajouter un nom de module apres PUBLIC (separe par un espace)
+target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle editeur) #ajouter un nom de module apres PUBLIC (separe par un espace)
