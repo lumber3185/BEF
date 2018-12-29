@@ -64,7 +64,7 @@ void Menu::draw(sf::RenderWindow &window){
         }
 }
 
-void Menu::event_handler(sf::Event event){
+void Menu::event_handler(sf::Event event, Worldgui &worldgui){
     switch (event.key.code){
         case sf::Keyboard::Z :
             MoveUp();
@@ -83,13 +83,12 @@ void Menu::event_handler(sf::Event event){
 			    case 0:
 		            std::cout << "Play button has been pressed" << std::endl;
                     //action :
-
                     this->is_on = 0;
+                    worldgui.set_IsOn(1);
 					break;
 				case 1:
 					std::cout << "Create button has been pressed" << std::endl;
                     //action :
-
                     this->is_on = 0;
 					break;
 				case 2:
@@ -98,7 +97,14 @@ void Menu::event_handler(sf::Event event){
                     
                     this->is_on = 0;
                     break;
+                default:
+                    std::cout << "touche inconnue" << std::endl;
+                    break;
 			}
+            break;
+
+        default:
+        break;
 	}
 }
 

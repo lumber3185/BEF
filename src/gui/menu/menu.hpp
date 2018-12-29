@@ -2,6 +2,7 @@
 #define menu_HPP
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "../worldgui/worldgui.hpp"
 
 #define MAX_NUMBER_OF_ITEMS 3
 
@@ -24,7 +25,7 @@ public:
     //Renvoi de l'item selectionne
     int GetPressedItem();
 
-    void event_handler(sf::Event event);
+    void event_handler(sf::Event event, Worldgui &worldgui);
     ~Menu();
 };
 
