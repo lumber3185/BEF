@@ -18,7 +18,7 @@ class FileManager {
 		~FileManager();
 		Terrain loadTerrain();
 		void saveTerrain(Terrain T);
-		entite loadEntity(string entitypath);
+		entite& loadEntity(string entitypath);
 };
 
 #endif
