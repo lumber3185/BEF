@@ -57,7 +57,7 @@ void Editeur::add() {
 	cout << "Quelle entite voulez vous ajouter ?" << endl;
 	string input = "";
 	cin >> input;
-	FileManager chargement(input);
+	FileManager chargement(input, "entite");
 	plateau.ajoutEntite(chargement.loadEntity(input),this->PosX,this->PosY);
 };
 
@@ -70,7 +70,7 @@ void Editeur::saveLevel() {
 };
 
 void Editeur::loadLevel() {
-	cout << 'Chargement réussi' << endl;
+	cout << "Chargement réussi" << endl;
 };
 
 ostream& operator<<(ostream& flux, Editeur e) {
