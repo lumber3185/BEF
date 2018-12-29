@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <memory>
 #include <string.h>
 
 using namespace std;
@@ -31,6 +33,8 @@ class FileManager {
 		obstacle& loadObstacle(string entityname);
 
 		arme& loadArme(string entityname);
+
+		shared_ptr<entite> loadEntity(string entityname);
 };
 
 #endif

@@ -62,8 +62,8 @@ void FileManager::loadTerrain(Terrain& tm){
 }
 
 obstacle& FileManager::loadObstacle(string efilename){
-    string chemin = "./res/sav/obstacle/" + efilename + ".txt";
-    ifstream fichier(chemin);
+    path = "./res/sav/obstacle/" + efilename + ".txt";
+    ifstream fichier(path);
     if(fichier){
         string t; int f;
         fichier >> t >> f;
@@ -74,8 +74,8 @@ obstacle& FileManager::loadObstacle(string efilename){
 }
 
 arme& FileManager::loadArme(string efilename){
-    string chemin = "./res/sav/arme/" + efilename + ".txt";
-    ifstream fichier(chemin);
+    path = "./res/sav/arme/" + efilename + ".txt";
+    ifstream fichier(path);
     if(fichier){
         string t; int p,f;
         fichier >> t >> p >> f;
@@ -85,11 +85,23 @@ arme& FileManager::loadArme(string efilename){
     else throw "FileName Incorrect";
 }
 
+shared_ptr<entite> FileManager::loadEntity(string entityname){
+    shared_ptr<entite> ret; 
+    if(entityname == "bazooka" || entityname == "pistolet"){
+        arme a(loadArme(entityname));
+        ret.reset(&a);
+    }
+    else if(entityname == "petitarbre" || entityname == "grosarbre" || entityname == "petitrocher" || entityname == "grosrocher"){
+        obstacle o(loadObstacle(entityname));
+        ret.reset(&o);
+    }
+    return ret;
+}
 
 void FileManager::saveTerrain(Terrain T, string savname){
     string nomdesav = savname + ".txt";
-    string chemin = "./res/sav/terrain/" + nomdesav;
-    ofstream save(chemin);
+    path = "./res/sav/terrain/" + nomdesav;
+    ofstream save(path);
     string type;
 
     if(save){
