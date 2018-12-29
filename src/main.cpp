@@ -26,8 +26,10 @@ int main(){
 		cerr << msg;
 	}
 
+
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
+
 	obstacle o("arbre", 3);
 	arme a("pistolet",5, 2);
 	t.ajoutEntite(o, 2, 2);
@@ -69,6 +71,6 @@ int main(){
 
 		window.display();
 
-	return 0;
 	}
+	return 0;
 }

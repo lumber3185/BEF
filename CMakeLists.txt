@@ -21,6 +21,7 @@ add_library(terrain STATIC src/forge/terrain/Terrain.h src/forge/terrain/Terrain
 add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obstacle.cpp)
 add_library(menu STATIC src/gui/menu/menu.hpp src/gui/menu/menu.cpp)
 add_library(worldgui STATIC src/gui/worldgui/worldgui.hpp src/gui/worldgui/worldgui.cpp)
+#add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 
 #linkage des librairies
 target_link_libraries(arme PUBLIC entite)
@@ -29,7 +30,7 @@ target_link_libraries(terrain PUBLIC entite obstacle arme)
 target_link_libraries(filemanager PUBLIC entite terrain)
 target_link_libraries(menu PUBLIC worldgui)
 target_link_libraries(worldgui PUBLIC terrain)
-
+#target_link_libraries(editeur PUBLIC terrain filemanager)
 #exec final
 #NE PAS TOUCHER
 add_executable(bef src/main.cpp)
