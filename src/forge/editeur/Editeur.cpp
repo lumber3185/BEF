@@ -58,11 +58,11 @@ void Editeur::add() {
 	string input = "";
 	cin >> input;
 	FileManager chargement(input, "entite");
-	plateau.ajoutEntite(chargement.loadEntity(input),this->PosX,this->PosY);
+	plateau.ajoutEntite(*chargement.loadEntity(input),PosX,PosY);
 };
 
 void Editeur::rmv() {
-	plateau.retireEntite(this->PosX,this->PosY);
+	plateau.retireEntite(PosX,PosY);
 };
 
 void Editeur::saveLevel() {
@@ -73,7 +73,7 @@ void Editeur::loadLevel() {
 	cout << "Chargement réussi" << endl;
 };
 
-ostream& operator<<(ostream& flux, Editeur e) {
+ostream& operator<<(ostream& flux, Editeur& e) {
 	flux << "editeur aux coordonnées : " << e.getPosX() << ", " << e.getPosY() << endl;
 	return flux;
 };

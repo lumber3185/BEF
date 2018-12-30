@@ -88,12 +88,10 @@ arme& FileManager::loadArme(string efilename){
 shared_ptr<entite> FileManager::loadEntity(string entityname){
     shared_ptr<entite> ret; 
     if(entityname == "bazooka" || entityname == "pistolet"){
-        arme a(loadArme(entityname));
-        ret.reset(&a);
+        ret.reset(new arme(loadArme(entityname)));
     }
     else if(entityname == "petitarbre" || entityname == "grosarbre" || entityname == "petitrocher" || entityname == "grosrocher"){
-        obstacle o(loadObstacle(entityname));
-        ret.reset(&o);
+        ret.reset(new obstacle(loadObstacle(entityname)));
     }
     return ret;
 }

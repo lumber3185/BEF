@@ -24,7 +24,7 @@ public:
 	void rmv();
 	void saveLevel();
 	void loadLevel();
-	friend ostream& operator<<(ostream& flux, Editeur e);
+	friend ostream& operator<<(ostream& flux, Editeur& e);
 };
 
 }

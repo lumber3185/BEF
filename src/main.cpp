@@ -32,9 +32,12 @@ int main(){
 
 	obstacle o("arbre", 3);
 	arme a("pistolet",5, 2);
+	Editeur e(t,3,4);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
+	e.user_action();
 	cout << t << endl;
+	cout << e << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
