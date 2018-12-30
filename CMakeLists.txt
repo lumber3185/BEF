@@ -1,6 +1,8 @@
 #Projet
 cmake_minimum_required(VERSION 3.6)
 project(BEF DESCRIPTION "Best Ennemies Forever")
+set(CMAKE_CXX_STANDARD 17)
+add_definitions(-Wall -Wextra)
 
 #chemins de sortie
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
@@ -20,6 +22,7 @@ add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obs
 add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 add_library(menu STATIC src/gui/menu/menu.hpp src/gui/menu/menu.cpp)
 add_library(worldgui STATIC src/gui/worldgui/worldgui.hpp src/gui/worldgui/worldgui.cpp)
+#add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 
 #linkage des librairies
 target_link_libraries(arme PUBLIC entite)
@@ -27,11 +30,13 @@ target_link_libraries(obstacle PUBLIC entite)
 target_link_libraries(terrain PUBLIC entite obstacle arme)
 target_link_libraries(filemanager PUBLIC entite terrain)
 target_link_libraries(editeur PUBLIC terrain filemanager)
-
+target_link_libraries(menu PUBLIC worldgui)
+target_link_libraries(worldgui PUBLIC terrain)
+#target_link_libraries(editeur PUBLIC terrain filemanager)
 #exec final
 #NE PAS TOUCHER
 add_executable(bef src/main.cpp)
 
 #linkage des modules :
 #ajouter le nom du module de "modules :" apres "PUBLIC"
-target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle editeur) #ajouter un nom de module apres PUBLIC (separe par un espace)
+target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle worldgui editeur) #ajouter un nom de module apres PUBLIC (separe par un espace)
