@@ -15,7 +15,7 @@ using namespace std;
 
 int main(){
 	Terrain t(10,10);
-	FileManager f("defaut", "terrain");
+	FileManager f("default", "terrain");
 	try{
 		f.loadTerrain(t);
 		cout << t;
@@ -37,7 +37,7 @@ int main(){
 	t.ajoutEntite(a,1,3);
 	e.user_action();
 	cout << t << endl;
-	cout << e << endl;
+	//cout << e << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
