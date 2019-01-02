@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../worldgui/worldgui.hpp"
+#include "../../forge/editeur/Editeur.h"
 
 #define MAX_NUMBER_OF_ITEMS 3
 
@@ -25,7 +26,7 @@ public:
     //Renvoi de l'item selectionne
     int GetPressedItem();
 
-    void event_handler(sf::Event event, Worldgui &worldgui);
+    void event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur);
     ~Menu();
 };
 
