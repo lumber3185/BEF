@@ -64,7 +64,7 @@ void Menu::draw(sf::RenderWindow &window){
         }
 }
 
-void Menu::event_handler(sf::Event event, Worldgui &worldgui){
+void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur){
     switch (event.key.code){
         case sf::Keyboard::Z :
             MoveUp();
@@ -90,6 +90,8 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui){
 					std::cout << "Create button has been pressed" << std::endl;
                     //action :
                     this->is_on = 0;
+                    worldgui.set_IsOn(1);
+                    editeur.set_IsOn(1);
 					break;
 				case 2:
 					std::cout << "Test button has been pressed" << std::endl;
