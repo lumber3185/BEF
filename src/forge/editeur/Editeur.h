@@ -6,7 +6,6 @@
 #include "../terrain/Terrain.h"
 #include "../filemanager/FileManager.h"
 
-namespace std {
 
 class Editeur {
 private:
@@ -26,7 +25,5 @@ public:
 	void loadLevel();
 	friend ostream& operator<<(ostream& flux, Editeur& e);
 };
-
-}
 
 #endif
