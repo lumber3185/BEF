@@ -58,6 +58,11 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
                     objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
                     objects[x][y].setTexture(&tree_large);
                 }
+                if(T.getEntite(x,y)->getType() == "grosarbre"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
+                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    objects[x][y].setTexture(&tree_large);
+                }
             }
             //draw grass layer
             window.draw(grass[x][y]);

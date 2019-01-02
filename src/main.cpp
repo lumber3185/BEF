@@ -37,7 +37,7 @@ int main(){
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
 	cout << t << endl;
-	//cout << editeur << endl;
+	cout << editeur << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
@@ -79,12 +79,12 @@ int main(){
 			menu.draw(window);
 		}
 
-		if(worldgui.is_on){
-			worldgui.draw(window,t);
-		}
-
-		if(editeur.is_on){
+		if(worldgui.is_on && editeur.is_on){
+			worldgui.draw(window, editeur.getPlateau());
 			editorgui.draw(window,editeur);
+		}
+		else if(worldgui.is_on){
+			worldgui.draw(window,t);
 		}
 
 		window.display();
