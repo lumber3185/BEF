@@ -16,7 +16,7 @@ using namespace std;
 
 int main(){
 	Terrain t(10,10);
-	/*FileManager f("default", "terrain");
+	FileManager f("default", "terrain");
 	try{
 		f.loadTerrain(t);
 		cout << t;
@@ -25,7 +25,7 @@ int main(){
 	}
 	catch(const char* msg){
 		cerr << msg;
-	}*/
+	}
 
 
 	int size_x = 800;//aller chercher la taille du monde
@@ -37,7 +37,7 @@ int main(){
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
 	cout << t << endl;
-	//cout << e << endl;
+	//cout << editeur << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
