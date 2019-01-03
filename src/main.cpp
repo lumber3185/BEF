@@ -31,11 +31,11 @@ int main(){
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
 
-	obstacle o("arbre", 3);
+	obstacle o("grosarbre", 3);
 	arme a("pistolet",5, 2);
-	Editeur editeur(t,3,4);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
+	Editeur editeur(t,3,4);
 	cout << t << endl;
 	cout << editeur << endl;
 
@@ -47,7 +47,7 @@ int main(){
 
 	Menu menu(window.getSize().x, window.getSize().y);
 	Worldgui worldgui(window.getSize().x, window.getSize().y,t);
-	Editorgui editorgui(window.getSize().x, window.getSize().y, t);
+	Editorgui editorgui(window.getSize().x, window.getSize().y, editeur.getPlateau());
 
 
 
@@ -83,7 +83,7 @@ int main(){
 			worldgui.draw(window, editeur.getPlateau());
 			editorgui.draw(window,editeur);
 		}
-		else if(worldgui.is_on){
+		if(worldgui.is_on && !editeur.is_on){
 			worldgui.draw(window,t);
 		}
 

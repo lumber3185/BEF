@@ -25,6 +25,13 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
     sf::Texture grass1;
     sf::Texture grass2;
     sf::Texture tree_large;
+    sf::Texture tree_small;
+    sf::Texture rock_large;
+    sf::Texture rock_small;
+    sf::Texture pistol;
+    sf::Texture bazooka;
+    sf::Texture perso1;
+    sf::Texture perso2;
 
     //load all needed textures
     if(!grass1.loadFromFile("res/sprites/tileGrass1.png")){
@@ -36,6 +43,28 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
     if(!tree_large.loadFromFile("res/sprites/treeGreen_large.png")){
         cerr << "failed to load tree_large";
     }
+    if(!tree_small.loadFromFile("res/sprites/treeGreen_small.png")){
+        cerr << "failed to load tree_small";
+    }
+    if(!rock_large.loadFromFile("res/sprites/meteorGrey_big1.png")){
+        cerr << "failed to load rock_large";
+    }
+    if(!rock_small.loadFromFile("res/sprites/meteorGrey_med1.png")){
+        cerr << "failed to load small rock";
+    }
+    if(!pistol.loadFromFile("res/sprites/weapon_silencer.png")){
+        cerr << "failed to load pistol";
+    }
+    if(!bazooka.loadFromFile("res/sprites/tank_bullet3.png")){
+        cerr << "failed to load bazooka";
+    }
+    if(!perso1.loadFromFile("res/sprites/survivor1_stand.png")){
+        cerr << "failed to load perso1";
+    }
+    if(!perso2.loadFromFile("res/sprites/hitman1_stand.png")){
+        cerr << "failed to load perso2";
+    }
+
     
     //drawing loop
     for(int x = 0; x < T.getX(); x++){
@@ -53,15 +82,46 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
                 }
 
             if(T.getEntite(x,y) != nullptr){
-                if(T.getEntite(x,y)->getType() == "arbre"){
-                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
-                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
-                    objects[x][y].setTexture(&tree_large);
-                }
                 if(T.getEntite(x,y)->getType() == "grosarbre"){
                     objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
                     objects[x][y].setTexture(&tree_large);
+                }
+                if(T.getEntite(x,y)->getType() == "petitarbre"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x*5/6, sizeoftile_y*5/6));
+                    // expl: |5-6| = 1 -> 1/(2*6)
+                    objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/12), y*sizeoftile_y+(sizeoftile_y*1/12));
+                    objects[x][y].setTexture(&tree_small);
+                }
+                if(T.getEntite(x,y)->getType() == "grosrocher"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
+                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    objects[x][y].setTexture(&rock_large);
+                }
+                if(T.getEntite(x,y)->getType() == "petitrocher"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x*5/6, sizeoftile_y*5/6));
+                    objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/12), y*sizeoftile_y+(sizeoftile_y*1/12));
+                    objects[x][y].setTexture(&rock_small);
+                }
+                if(T.getEntite(x,y)->getType() == "pistolet"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x*2/6, sizeoftile_y*1/6));
+                    objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*4/12), y*sizeoftile_y+(sizeoftile_y*5/12));
+                    objects[x][y].setTexture(&pistol);
+                }
+                if(T.getEntite(x,y)->getType() == "bazooka"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
+                    objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
+                    objects[x][y].setTexture(&bazooka);
+                }
+                if(T.getEntite(x,y)->getType() == "perso1"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
+                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    objects[x][y].setTexture(&perso1);
+                }
+                if(T.getEntite(x,y)->getType() == "perso2"){
+                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
+                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    objects[x][y].setTexture(&perso2);
                 }
             }
             //draw grass layer

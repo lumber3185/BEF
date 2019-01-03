@@ -85,6 +85,7 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur){
                     //action :
                     this->is_on = 0;
                     worldgui.set_IsOn(1);
+                    editeur.set_IsOn(0);
 					break;
 				case 1:
 					std::cout << "Create button has been pressed" << std::endl;
