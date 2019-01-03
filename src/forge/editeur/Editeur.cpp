@@ -2,7 +2,9 @@
 
 using namespace std;
 
-Editeur::Editeur(Terrain t, int x=0, int y=0): PosX(x), PosY(y), plateau(t) {};
+Editeur::Editeur(Terrain t, int x=0, int y=0): PosX(x), PosY(y), plateau(t) {
+	is_on=0;
+};
 
 Editeur::~Editeur() {};
 
@@ -18,37 +20,45 @@ Terrain Editeur::getPlateau() const {
 	return plateau;
 }
 
-void Editeur::user_action() {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-		move("up");
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		move("right");
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		move("down");
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-		move("left");
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
-		loadLevel();
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		saveLevel();
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		add();
-	}
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-		rmv();
+void Editeur::user_action(sf::Event event) {
+	
+	switch (event.key.code)
+	{
+		case sf::Keyboard::Z :
+			move("up");
+			break;
+		case sf::Keyboard::S :
+			move("down");
+			break;
+		case sf::Keyboard::D :
+			move("right");
+			break;
+		case sf::Keyboard::Q :
+			move("left");
+			break;
+		case sf::Keyboard::L :
+			loadLevel();
+			break;
+		case sf::Keyboard::W :
+			saveLevel();
+			break;
+		case sf::Keyboard::A :
+			add();
+			break;
+		case sf::Keyboard::E :
+			rmv();
+			break;
+		default:
+			std::cout << "unbound key" << std::endl;
+			break;
 	}
 }
 
 void Editeur::move(string direction) {
-	if(direction ==  "up") PosY++;
+	// /!\ Missing bound check
+	if(direction ==  "up" ) PosY--;//inverted
 	else if(direction == "right") PosX++;
-	else if(direction == "down") PosY--;
+	else if(direction == "down") PosY++;//inverted
 	else if(direction == "left") PosX--;
 	else cout << "C'est par ou ca ? '" << direction << "' ?! (direction invalide)" << endl;
 };
@@ -57,12 +67,12 @@ void Editeur::add() {
 	cout << "Quelle entite voulez vous ajouter ?" << endl;
 	string input = "";
 	cin >> input;
-	FileManager chargement(input);
-	plateau.ajoutEntite(chargement.loadEntity(input),this->PosX,this->PosY);
+	FileManager chargement(input, "entite");
+	plateau.ajoutEntite(*chargement.loadEntity(input),PosX,PosY);
 };
 
 void Editeur::rmv() {
-	plateau.retireEntite(this->PosX,this->PosY);
+	plateau.retireEntite(PosX,PosY);
 };
 
 void Editeur::saveLevel() {
@@ -70,10 +80,14 @@ void Editeur::saveLevel() {
 };
 
 void Editeur::loadLevel() {
-	cout << 'Chargement réussi' << endl;
+	cout << "Chargement réussi" << endl;
 };
 
-ostream& operator<<(ostream& flux, Editeur e) {
+ostream& operator<<(ostream& flux, Editeur& e) {
 	flux << "editeur aux coordonnées : " << e.getPosX() << ", " << e.getPosY() << endl;
 	return flux;
 };
+
+void Editeur::set_IsOn(bool i){
+	this->is_on = i;
+}

@@ -10,12 +10,13 @@
 #include "forge/editeur/Editeur.h"
 #include "gui/menu/menu.hpp"
 #include "gui/worldgui/worldgui.hpp"
+#include "gui/editorgui/editorgui.hpp"
 
 using namespace std;
 
 int main(){
 	Terrain t(10,10);
-	FileManager f("defaut", "terrain");
+	FileManager f("default", "terrain");
 	try{
 		f.loadTerrain(t);
 		cout << t;
@@ -32,26 +33,39 @@ int main(){
 
 	obstacle o("arbre", 3);
 	arme a("pistolet",5, 2);
+	Editeur editeur(t,3,4);
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
 	cout << t << endl;
+	cout << editeur << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
+	//centre& fenetre
+	auto desktop = sf::VideoMode::getDesktopMode();
+	window.setPosition(sf::Vector2i(desktop.width/2 -window.getSize().x/2, desktop.height/2 - window.getSize().y/2));
 
 	Menu menu(window.getSize().x, window.getSize().y);
 	Worldgui worldgui(window.getSize().x, window.getSize().y,t);
+	Editorgui editorgui(window.getSize().x, window.getSize().y, t);
+
 
 
 	while (window.isOpen()){
 		sf::Event event;
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
-				if(worldgui.is_on){
+				if(worldgui.is_on && !editeur.is_on){
 					worldgui.event_handler(event);
 				}
 				if(menu.is_on){
-					menu.event_handler(event,worldgui);
+					menu.event_handler(event,worldgui,editeur);
+				}
+				if(editeur.is_on){
+					editeur.user_action(event);
+				}
+				if(event.key.code == sf::Keyboard::Escape){
+					window.close();
 				}
 			}
 			if(event.type == sf::Event::Closed)
@@ -65,7 +79,11 @@ int main(){
 			menu.draw(window);
 		}
 
-		if(worldgui.is_on){
+		if(worldgui.is_on && editeur.is_on){
+			worldgui.draw(window, editeur.getPlateau());
+			editorgui.draw(window,editeur);
+		}
+		else if(worldgui.is_on){
 			worldgui.draw(window,t);
 		}
 
