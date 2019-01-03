@@ -27,7 +27,6 @@ int main(){
 		cerr << msg;
 	}
 
-
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
 
@@ -38,7 +37,7 @@ int main(){
 	t.ajoutEntite(a,1,3);
 	cout << t << endl;
 	cout << editeur << endl;
-
+/*
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
 	//centre& fenetre
@@ -90,5 +89,6 @@ int main(){
 		window.display();
 
 	}
+	*/
 	return 0;
 }
