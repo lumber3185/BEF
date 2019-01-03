@@ -21,7 +21,7 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
     sf::RectangleShape grass[T.getX()][T.getY()];
     sf::RectangleShape objects[T.getX()][T.getY()];
     
-    //create all needed textures
+    //declare all needed textures
     sf::Texture grass1;
     sf::Texture grass2;
     sf::Texture tree_large;
