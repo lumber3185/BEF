@@ -9,3 +9,4 @@ src/CMakeFiles/
 *.code-workspace
 Makefile
 lib/
+bin/
