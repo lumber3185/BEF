@@ -18,6 +18,7 @@ class entite {
 		string getType();
 		void setType(string t);
 		void setForce(int f);
+		friend ostream& operator<<(ostream& flux, entite& e);
 };
 
 #endif
