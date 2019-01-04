@@ -22,7 +22,6 @@ add_library(obstacle STATIC src/forge/obstacle/obstacle.h src/forge/obstacle/obs
 add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 add_library(menu STATIC src/gui/menu/menu.hpp src/gui/menu/menu.cpp)
 add_library(worldgui STATIC src/gui/worldgui/worldgui.hpp src/gui/worldgui/worldgui.cpp)
-add_library(editeur STATIC src/forge/editeur/Editeur.h src/forge/editeur/Editeur.cpp)
 add_library(editorgui STATIC src/gui/editorgui/editorgui.hpp src/gui/editorgui/editorgui.cpp)
 
 #linkage des librairies
