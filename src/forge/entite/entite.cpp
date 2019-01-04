@@ -12,3 +12,7 @@ string entite::getType() { return type; };
 int entite::getForce() { return force; };
 void entite::setForce(int f) { force = f; };
 
+ostream& operator<<(ostream& flux, entite& e){
+    flux << e.type << " " << e.force;
+    return flux;
+};

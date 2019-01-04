@@ -11,12 +11,14 @@
 #include "gui/menu/menu.hpp"
 #include "gui/worldgui/worldgui.hpp"
 #include "gui/editorgui/editorgui.hpp"
+#include "forge/personnage/personnage.h"
 
 using namespace std;
 
 int main(){
 	Terrain t(10,10);
 	FileManager f("default", "terrain");
+	/*
 	try{
 		f.loadTerrain(t);
 		cout << t;
@@ -29,14 +31,19 @@ int main(){
 
 	int size_x = 800;//aller chercher la taille du monde
 	int size_y = 600;//idem
+	*/
 
 	obstacle o("arbre", 3);
 	arme a("pistolet",5, 2);
-	Editeur editeur(t,3,4);
+	//Editeur editeur(t,3,4);
+	
 	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,1,3);
+	personnage p(t);
 	cout << t << endl;
-	cout << editeur << endl;
+	cout << p << endl;
+	
+	//cout << editeur << endl;
 /*
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
