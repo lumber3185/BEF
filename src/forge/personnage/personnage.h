@@ -21,9 +21,14 @@ class personnage : public entite {
         int getX();
         int getY();
         void changerOrientation(int orientation);
-        void tir(Terrain& t);
-        // 1 si réussi, 0 sinon
+        void tir(Terrain& t, int angle);
+
+        // 1 si le personnage a réussi à bouger, 0 sinon
         int mouv(Terrain& t);
+
+        // 1 si le personnage a reussi à ramasser l'arme, 0 sinon
+        int ramasser(Terrain& t);
+
         friend ostream& operator<<(ostream& flux, personnage& p);
 };
 

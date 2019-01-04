@@ -76,7 +76,28 @@ int personnage::mouv(Terrain& t){
     return deplace;
 };
 
-void personnage::tir(Terrain& t){
+int personnage::ramasser(Terrain& t){
+    switch(orientation){
+        case 0:
+        if(t.getEntite(x, y+1) != nullptr){
+            if(t.getEntite(x, y+1)->getType() == "pistolet" || t.getEntite(x, y+1)->getType() == "bazooka"){
+                //a.setType(t.getEntite(x, y+1)->getType());
+                //a.setForce(t.getEntite(x,y+1)->getForce());
+                t.retireEntite(x, y+1);
+                return 1;
+            }
+        } 
+        break;
+        case 1:
+        break;
+        case 2:
+        break;
+        case 3:
+        break;
+    }
+};
+
+void personnage::tir(Terrain& t, int angle){
 
 };
 

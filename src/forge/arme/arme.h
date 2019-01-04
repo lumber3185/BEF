@@ -12,6 +12,7 @@ class arme : public entite{
 		~arme();
 		void subirDegats();
 		int getPortee();
+		void setPortee(int p);
 };
 
 #endif

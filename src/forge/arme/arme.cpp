@@ -13,3 +13,5 @@ arme::arme(arme &copie): entite(copie.getType(), copie.getForce()), portee(copie
 arme::~arme() {};
 
 int arme::getPortee() { return portee; };
+
+void arme::setPortee(int p) { this->portee = p; };
