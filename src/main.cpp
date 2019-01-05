@@ -16,7 +16,7 @@
 using namespace std;
 
 int main(){
-	Terrain t(10,10);
+	Terrain t(10,10);/*
 	FileManager f("default", "terrain");
 	try{
 		f.loadTerrain(t);
@@ -30,18 +30,21 @@ int main(){
 	//int size_x = 800;//aller chercher la taille du monde
 	//int size_y = 600;//idem
 
-	//obstacle o("arbre", 3);
+	//obstacle o("arbre", 3);*/
 	arme a("pistolet", 2, 5);
 	//Editeur editeur(t,3,4);
 	
 	//t.ajoutEntite(o, 2, 2);
-	t.ajoutEntite(a,3,7);
-	personnage p(t);
+	t.ajoutEntite(a,3,3);
+	cout << t << endl;
+	personnage p(t,3,2);
+	p.changerOrientation(0);
 
-	cout << t << endl;
+	cout << p << endl;
 	
-	p.mouv(t);
+	p.ramasser(t);
 	cout << t << endl;
+	cout << p << endl;
 	
 	//cout << editeur << endl;
 /*

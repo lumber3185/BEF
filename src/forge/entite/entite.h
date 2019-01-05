@@ -15,6 +15,7 @@ class entite {
 		~entite();
 		void subirDegats();
 		int getForce();
+		int getPortee();
 		string getType();
 		void setType(string t);
 		void setForce(int f);

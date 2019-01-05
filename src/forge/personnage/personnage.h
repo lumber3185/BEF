@@ -4,6 +4,7 @@
 #include "../arme/arme.h"
 #include "../entite/entite.h"
 #include "../terrain/Terrain.h"
+#include <memory>
 
 class personnage : public entite {
     private:
@@ -14,9 +15,9 @@ class personnage : public entite {
         // 0 nord, 1 est, 2 sud, 3 ouest
         int orientation;
         // défaut : "poing", force = 1, portée=1
-        arme a;
+        shared_ptr<arme> a;
     public:
-        personnage(Terrain& t);
+        personnage(Terrain& t, int x = -1, int y = -1);
         ~personnage();
         int getX();
         int getY();
