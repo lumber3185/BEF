@@ -5,7 +5,7 @@ using namespace std;
 #include "../arme/arme.h"
 #include "../obstacle/obstacle.h"
 
-Terrain::Terrain(int x = 0, int y = 0): SizeX(x), SizeY(y) {
+Terrain::Terrain(int x, int y): SizeX(x), SizeY(y) {
 	for(int i = 0; i < SizeX; i++) {
 		vector< shared_ptr<entite> >temp;
 		for(int j = 0; j < SizeY; j++) {

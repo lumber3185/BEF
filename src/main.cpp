@@ -37,15 +37,15 @@ int main(){
 	//t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,3,3);
 
-	personnage p2(t);
-	personnage p1(t);
+	personnage p2(t,2,3);
+	personnage p1(t,6,6);
 	
 	cout << t << endl;
 	cout << p1<< endl;
 	cout << p2 << endl;
-	int b = p1.mouv(t);
+	//int b = p1.mouv(t);
 
-	cout << b << endl;
+	//cout << b << endl;
 	cout << t << endl;
 
 	//cout << editeur << endl;
@@ -66,7 +66,7 @@ int main(){
 		while (window.pollEvent(event)){
 			if(event.type == sf::Event::KeyReleased){
 				if(worldgui.is_on && !editeur.is_on){
-					worldgui.event_handler(event);
+					worldgui.event_handler(event,t,p1,p2);
 				}
 				if(menu.is_on){
 					menu.event_handler(event,worldgui,editeur);

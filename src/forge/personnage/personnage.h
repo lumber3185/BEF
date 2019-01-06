@@ -12,6 +12,7 @@ class personnage : public entite {
         int x,y;
         // défaut : 15
         int pdv;
+        bool mon_tour;
         // 0 nord, 1 est, 2 sud, 3 ouest
         // int orientation;
         // défaut : "poing", force = 1, portée=1
@@ -30,6 +31,9 @@ class personnage : public entite {
         int getX();
         int getY();
         int get_pdv();
+        void set_tour(bool b);
+        bool get_tour();
+        int getOrientation();
         void changerOrientation(int orientation);
         void tir(Terrain& t, int angle);
         int orientation;

@@ -117,28 +117,30 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                     if(p1.getX()==x && p1.getY()==y){ //check if this is p1
                         objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
                         objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
-                        switch (p1.orientation)
+                        switch (p1.getOrientation())
                         {   
                             case personnage::nord:
+                                cout << "looking north" << endl;
                                 objects[x][y].rotate(270.f);
                             break;
                             case personnage::est:
+                                cout << "looking east" << endl;
                                 //actual default
                             break;
                             case personnage::sud:
+                                cout << "looking south" << endl;
                                 objects[x][y].rotate(90.f);
                             break;
                             case personnage::ouest:
+                                cout << "looking ouest" << endl;
                                 objects[x][y].rotate(180.f);
-                            break;
-                            default:
                             break;
                         }
                         objects[x][y].setTexture(&perso1);
                     }
                     if(p2.getX() == x && p2.getY()==y){ // check if this p2
-                        objects[4][2].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
-                        objects[4][2].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                        objects[4][2].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
+                        objects[4][2].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_x*1/4));
                         switch (p2.orientation)
                         {   
                             case personnage::nord:
@@ -154,6 +156,7 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                                 objects[x][y].rotate(180.f);
                             break;
                             default:
+                            cout << "you shouldnt see this" << endl;
                             break;
                         }
                         objects[4][2].setTexture(&perso2);
@@ -168,14 +171,37 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
     }
 }
 
-void Worldgui::event_handler(sf::Event event){
+void Worldgui::event_handler(sf::Event event,Terrain t,personnage p1, personnage p2){
     
     switch (event.key.code)
     {
         case sf::Keyboard::Space:
             std::cout << "pressed space" << std::endl;
             break;
-    
+        case sf::Keyboard::Q:
+            std::cout << "pressed ouest" << std::endl;
+            p1.changerOrientation(personnage::ouest);
+            cout << p1 << endl;
+        break;
+        case sf::Keyboard::D:
+            std::cout << "pressed est" << std::endl;
+            p1.changerOrientation(personnage::est);
+            cout << p1 << endl;
+        break;
+        case sf::Keyboard::Z:
+            std::cout << "pressed north" << std::endl;
+            p1.changerOrientation(personnage::nord);
+            cout << p1 << endl;
+        break;
+        case sf::Keyboard::S:
+        std::cout << "pressed south" << std::endl;
+            p1.changerOrientation(personnage::sud);
+            cout << p1 << endl;
+            break;
+        case sf::Keyboard::Enter:
+        std::cout << "moving" << endl;
+            p1.mouv(t);
+            break;
         default:
             std::cout << "default key pressed" << std::endl;
             break;

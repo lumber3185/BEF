@@ -11,6 +11,7 @@ using namespace std;
 personnage::personnage(Terrain& t): entite("personnage", 0), a(new arme("poing", 1, 1)){
     x = rand() % t.getX();
     y = rand() % t.getY();
+    mon_tour = 0;
     pdv = 15;
     orientation = nord;
 
@@ -27,6 +28,7 @@ personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new
     pdv = 15;
     orientation = 0;
     t.ajoutEntite(*this, x, y);
+    mon_tour = 0;
 }
 
 personnage::~personnage(){};
@@ -51,33 +53,69 @@ int personnage::mouv(Terrain& t){
     int deplace = 0;
     cout << "mouv";
     switch(orientation){
-        case 0:
+        case personnage::nord:
             if(t.getEntite(x,y+1) == nullptr){
-                cout << "north case" << endl;
-                t.ajoutEntite(*this, x, y+1);
-                t.retireEntite(x,y);
-                deplace = 1;
+                if(y+1 <= t.getY()){
+                    cout << "north case" << endl;
+                    t.ajoutEntite(*this, x, y+1);
+                    this->y++;
+                    t.retireEntite(x,y);
+                    deplace = 1;
+                }
+                else{
+                    cout << "out of bounds" << endl;
+                }
+            }
+            else{
+                cout << "impossible to move there" << endl;
             }
         break;
-        case 1:
+        case personnage::est:
             if(t.getEntite(x+1,y) == nullptr){
-                t.ajoutEntite(*this, x+1, y);
-                t.retireEntite(x,y);
-                deplace = 1;
+                if(x+1 <= t.getX()){
+                    t.ajoutEntite(*this, x+1, y);
+                    this->x++;
+                    t.retireEntite(x,y);
+                    deplace = 1;
+                }
+                            else{
+                    cout << "out of bounds" << endl;
+                }
+            }
+            else{
+                cout << "impossible to move there" << endl;
             }
         break;
-        case 2:
+        case personnage::sud:
             if(t.getEntite(x,y-1) == nullptr){
+                if(y-1 >= 0){
                 t.ajoutEntite(*this, x, y-1);
+                this->y--;
                 t.retireEntite(x,y);
                 deplace = 1;
+                }
+                                else{
+                    cout << "out of bounds" << endl;
+                }
+            }
+            else{
+                cout << "impossible to move there" << endl;
             }
         break;
-        case 3:
+        case personnage::ouest:
             if(t.getEntite(x-1,y) == nullptr){
-                t.ajoutEntite(*this, x-1, y);
-                t.retireEntite(x,y);
-                deplace = 1;
+                if(x-1 >= 0){
+                    t.ajoutEntite(*this, x-1, y);
+                    this->x--;
+                    t.retireEntite(x,y);
+                    deplace = 1;
+                }
+                            else{
+                    cout << "out of bounds" << endl;
+                }
+            }
+            else{
+                cout << "impossible to move there" << endl;
             }
         break;
     }
@@ -145,6 +183,18 @@ int personnage::ramasser(Terrain& t){
 void personnage::tir(Terrain& t, int angle){
 
 };
+
+bool personnage::get_tour(){
+    return this->mon_tour;
+}
+
+void personnage::set_tour(bool b){
+    this->mon_tour = b;
+}
+
+int personnage::getOrientation(){
+    return this->orientation;
+}
 
 ostream& operator<<(ostream& flux, personnage& p){
     flux << "Personnage : " << endl;
