@@ -30,7 +30,7 @@ int main(){
 
 	
 	int size_x = 800;//aller chercher la taille du monde
-	int size_y = 800;//idem
+	int size_y = 600;//idem
 
 	obstacle o("arbre", 3);
 	arme a("pistolet", 2, 5);
@@ -104,6 +104,7 @@ int main(){
 		cout << p1 << "IN MAIN" << endl;
 		cout << t << "IN MAIN" << endl;
 		cout << "########" << endl;
+		usleep(1000000);
 
 	}
 	
