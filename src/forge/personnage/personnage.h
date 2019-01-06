@@ -17,7 +17,8 @@ class personnage : public entite {
         // défaut : "poing", force = 1, portée=1
         shared_ptr<arme> a;
     public:
-        personnage(Terrain& t, int x = -1, int y = -1);
+        personnage(Terrain& t);
+        personnage(Terrain& t, int x, int y);
         ~personnage();
         int getX();
         int getY();

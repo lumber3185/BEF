@@ -36,16 +36,17 @@ int main(){
 	
 	//t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,3,3);
-	cout << t << endl;
-	personnage p(t,3,2);
-	p.changerOrientation(0);
 
-	cout << p << endl;
+	personnage p(t);
+	personnage p1(t);
 	
-	p.ramasser(t);
 	cout << t << endl;
-	cout << p << endl;
-	
+	cout << p<< endl;
+	int b = p.mouv(t);
+
+	cout << b << endl;
+	cout << t << endl;
+
 	//cout << editeur << endl;
 /*
 	sf::RenderWindow window;
