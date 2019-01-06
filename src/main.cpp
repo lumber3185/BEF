@@ -55,7 +55,7 @@ int main(){
 
 	Menu menu(window.getSize().x, window.getSize().y);
 	Worldgui worldgui(window.getSize().x, window.getSize().y,t);
-	Editorgui editorgui(window.getSize().x, window.getSize().y, t);
+	Editorgui editorgui(window.getSize().x, window.getSize().y, editeur.getPlateau());
 
 
 
@@ -91,7 +91,7 @@ int main(){
 			worldgui.draw(window, editeur.getPlateau());
 			editorgui.draw(window,editeur);
 		}
-		else if(worldgui.is_on){
+		if(worldgui.is_on && !editeur.is_on){
 			worldgui.draw(window,t);
 		}
 
