@@ -24,6 +24,8 @@ personnage::personnage(Terrain& t): entite("personnage", 0), a(new arme("poing",
 };
 
 personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new arme("poing", 1, 1)), x(x), y(y){
+    pdv = 15;
+    orientation = 0;
     t.ajoutEntite(*this, x, y);
 }
 
