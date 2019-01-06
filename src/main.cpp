@@ -16,7 +16,7 @@
 using namespace std;
 
 int main(){
-	Terrain t(10,10);/*
+	Terrain t(10,10);
 	FileManager f("default", "terrain");
 	try{
 		f.loadTerrain(t);
@@ -27,14 +27,14 @@ int main(){
 		cerr << msg;
 	}
 
-	//int size_x = 800;//aller chercher la taille du monde
-	//int size_y = 600;//idem
+	int size_x = 800;//aller chercher la taille du monde
+	int size_y = 600;//idem
 
-	//obstacle o("arbre", 3);*/
+	obstacle o("arbre", 3);
 	arme a("pistolet", 2, 5);
-	//Editeur editeur(t,3,4);
+	Editeur editeur(t,3,4);
 	
-	//t.ajoutEntite(o, 2, 2);
+	t.ajoutEntite(o, 2, 2);
 	t.ajoutEntite(a,3,3);
 	cout << t << endl;
 	personnage p(t,3,2);
@@ -46,11 +46,10 @@ int main(){
 	cout << t << endl;
 	cout << p << endl;
 	
-	//cout << editeur << endl;
-/*
+	cout << editeur << endl;
+
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
-	//centre& fenetre
 	auto desktop = sf::VideoMode::getDesktopMode();
 	window.setPosition(sf::Vector2i(desktop.width/2 -window.getSize().x/2, desktop.height/2 - window.getSize().y/2));
 
@@ -99,6 +98,6 @@ int main(){
 		window.display();
 
 	}
-	*/
+	
 	return 0;
 }
