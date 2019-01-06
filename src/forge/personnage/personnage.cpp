@@ -74,7 +74,7 @@ int personnage::mouv(Terrain& t){
             if(t.getEntite(x+1,y) == nullptr){
                 if(x+1 <= t.getX()){
                     t.ajoutEntite(*this, x+1, y);
-                    this->x++;
+                    x++;
                     t.retireEntite(x,y);
                     deplace = 1;
                 }
@@ -90,7 +90,7 @@ int personnage::mouv(Terrain& t){
             if(t.getEntite(x,y-1) == nullptr){
                 if(y-1 >= 0){
                 t.ajoutEntite(*this, x, y-1);
-                this->y--;
+                y--;
                 t.retireEntite(x,y);
                 deplace = 1;
                 }
@@ -106,7 +106,7 @@ int personnage::mouv(Terrain& t){
             if(t.getEntite(x-1,y) == nullptr){
                 if(x-1 >= 0){
                     t.ajoutEntite(*this, x-1, y);
-                    this->x--;
+                    x--;
                     t.retireEntite(x,y);
                     deplace = 1;
                 }

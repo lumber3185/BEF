@@ -3,6 +3,7 @@
 #include <string.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <unistd.h>
 #include "./forge/terrain/Terrain.h"
 #include "./forge/filemanager/FileManager.h"
 #include "forge/terrain/Terrain.h"
@@ -27,8 +28,9 @@ int main(){
 		cerr << msg;
 	}
 
+	
 	int size_x = 800;//aller chercher la taille du monde
-	int size_y = 600;//idem
+	int size_y = 800;//idem
 
 	obstacle o("arbre", 3);
 	arme a("pistolet", 2, 5);
@@ -98,6 +100,10 @@ int main(){
 		}
 
 		window.display();
+		cout << "########" << endl;
+		cout << p1 << "IN MAIN" << endl;
+		cout << t << "IN MAIN" << endl;
+		cout << "########" << endl;
 
 	}
 	

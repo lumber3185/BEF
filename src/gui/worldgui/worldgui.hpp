@@ -26,7 +26,7 @@ sf::Texture get_Texture_grass1();
 
 void draw(sf::RenderWindow &window,Terrain T,personnage p1, personnage p2);
 
-void event_handler(sf::Event event,Terrain t, personnage p1, personnage p2);
+void event_handler(sf::Event event,Terrain &t, personnage &p1, personnage &p2);
 
 void set_IsOn(bool i);
 

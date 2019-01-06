@@ -73,11 +73,13 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
             if(gen()){ //display two types of grass
                     grass[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     grass[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    grass[x][y].setOutlineThickness(1.f);
                     grass[x][y].setTexture(&grass1);
                 }
                 else{
                     grass[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     grass[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                    grass[x][y].setOutlineThickness(1.f);
                     grass[x][y].setTexture(&grass2);
                 }
 
@@ -116,51 +118,57 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                 if(T.getEntite(x,y)->getType() == "personnage"){
                     if(p1.getX()==x && p1.getY()==y){ //check if this is p1
                         objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
-                        objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                         switch (p1.getOrientation())
                         {   
                             case personnage::nord:
                                 cout << "looking north" << endl;
                                 objects[x][y].rotate(270.f);
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                             break;
                             case personnage::est:
                                 cout << "looking east" << endl;
-                                //actual default
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::sud:
                                 cout << "looking south" << endl;
                                 objects[x][y].rotate(90.f);
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::ouest:
                                 cout << "looking ouest" << endl;
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                                 objects[x][y].rotate(180.f);
                             break;
                         }
                         objects[x][y].setTexture(&perso1);
                     }
-                    if(p2.getX() == x && p2.getY()==y){ // check if this p2
-                        objects[4][2].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
-                        objects[4][2].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_x*1/4));
-                        switch (p2.orientation)
+                    if(p2.getX()==x && p2.getY()==y){ //check if this is p2
+                        objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
+                        switch (p2.getOrientation())
                         {   
                             case personnage::nord:
+                                cout << "looking north" << endl;
                                 objects[x][y].rotate(270.f);
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                             break;
                             case personnage::est:
-                                //actual default
+                                cout << "looking east" << endl;
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::sud:
+                                cout << "looking south" << endl;
                                 objects[x][y].rotate(90.f);
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::ouest:
+                                cout << "looking ouest" << endl;
+                                objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                                 objects[x][y].rotate(180.f);
                             break;
-                            default:
-                            cout << "you shouldnt see this" << endl;
-                            break;
                         }
-                        objects[4][2].setTexture(&perso2);
+                        objects[x][y].setTexture(&perso2);
                     }
+
                 }
             }
             //draw grass layer
@@ -171,7 +179,7 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
     }
 }
 
-void Worldgui::event_handler(sf::Event event,Terrain t,personnage p1, personnage p2){
+void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personnage &p2){
     
     switch (event.key.code)
     {
@@ -197,15 +205,16 @@ void Worldgui::event_handler(sf::Event event,Terrain t,personnage p1, personnage
         std::cout << "pressed south" << std::endl;
             p1.changerOrientation(personnage::sud);
             cout << p1 << endl;
-            break;
+        break;
         case sf::Keyboard::Enter:
         std::cout << "moving" << endl;
             p1.mouv(t);
-            break;
+        break;
         default:
             std::cout << "default key pressed" << std::endl;
-            break;
+        break;
     }
+    cout << p1 << "IN EVENT HANDLER" << endl;
 }
 
 void Worldgui::set_IsOn(bool i){
