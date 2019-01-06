@@ -12,7 +12,7 @@ Worldgui::Worldgui(int input_width, int input_height, Terrain T){
     sizeoftile_y = height/T.getY();
 }
 
-void Worldgui::draw(sf::RenderWindow &window, Terrain T){
+void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personnage p2){
     
     //generate random bool
     auto gen = std::bind(std::uniform_int_distribution<>(0,1), std::default_random_engine());
@@ -113,15 +113,51 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T){
                     objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                     objects[x][y].setTexture(&bazooka);
                 }
-                if(T.getEntite(x,y)->getType() == "perso1"){
-                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
-                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
-                    objects[x][y].setTexture(&perso1);
-                }
-                if(T.getEntite(x,y)->getType() == "perso2"){
-                    objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
-                    objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
-                    objects[x][y].setTexture(&perso2);
+                if(T.getEntite(x,y)->getType() == "personnage"){
+                    if(p1.getX()==x && p1.getY()==y){ //check if this is p1
+                        objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
+                        objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
+                        switch (p1.orientation)
+                        {   
+                            case personnage::nord:
+                                objects[x][y].rotate(270.f);
+                            break;
+                            case personnage::est:
+                                //actual default
+                            break;
+                            case personnage::sud:
+                                objects[x][y].rotate(90.f);
+                            break;
+                            case personnage::ouest:
+                                objects[x][y].rotate(180.f);
+                            break;
+                            default:
+                            break;
+                        }
+                        objects[x][y].setTexture(&perso1);
+                    }
+                    if(p2.getX() == x && p2.getY()==y){ // check if this p2
+                        objects[4][2].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
+                        objects[4][2].setPosition(x*sizeoftile_x, y*sizeoftile_y);
+                        switch (p2.orientation)
+                        {   
+                            case personnage::nord:
+                                objects[x][y].rotate(270.f);
+                            break;
+                            case personnage::est:
+                                //actual default
+                            break;
+                            case personnage::sud:
+                                objects[x][y].rotate(90.f);
+                            break;
+                            case personnage::ouest:
+                                objects[x][y].rotate(180.f);
+                            break;
+                            default:
+                            break;
+                        }
+                        objects[4][2].setTexture(&perso2);
+                    }
                 }
             }
             //draw grass layer

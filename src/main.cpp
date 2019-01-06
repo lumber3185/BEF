@@ -34,19 +34,19 @@ int main(){
 	arme a("pistolet", 2, 5);
 	Editeur editeur(t,3,4);
 	
-	t.ajoutEntite(o, 2, 2);
-	t.ajoutEntite(a,3,3);
-	cout << t << endl;
-	personnage p(t,3,2);
-	p.changerOrientation(0);
+	//t.ajoutEntite(o, 2, 2);
+	//t.ajoutEntite(a,3,3);
+	personnage p1(t,3,2);
+	personnage p2(t,4,7);
+	//p.changerOrientation(0);
 
-	cout << p << endl;
+	cout << p1 << endl;
+	cout << p2 << endl;
 	
-	p.ramasser(t);
+	//p.ramasser(t);
 	cout << t << endl;
-	cout << p << endl;
-	
-	cout << editeur << endl;
+	//cout << p << endl;
+	//cout << editeur << endl;
 
 	sf::RenderWindow window;
 	window.create(sf::VideoMode(size_x, size_y), "BEF");
@@ -88,11 +88,11 @@ int main(){
 		}
 
 		if(worldgui.is_on && editeur.is_on){
-			worldgui.draw(window, editeur.getPlateau());
+			worldgui.draw(window, editeur.getPlateau(),p1,p2);
 			editorgui.draw(window,editeur);
 		}
 		if(worldgui.is_on && !editeur.is_on){
-			worldgui.draw(window,t);
+			worldgui.draw(window,t,p1,p2);
 		}
 
 		window.display();

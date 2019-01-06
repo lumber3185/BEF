@@ -1,6 +1,7 @@
 #ifndef worldgui_HPP
 #define worldgui_HPP
 #include "../../forge/terrain/Terrain.h"
+#include "../../forge/personnage/personnage.h"
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
@@ -23,7 +24,7 @@ Worldgui(int width, int height, Terrain T);
 
 sf::Texture get_Texture_grass1();
 
-void draw(sf::RenderWindow &window,Terrain T);
+void draw(sf::RenderWindow &window,Terrain T,personnage p1, personnage p2);
 
 void event_handler(sf::Event event);
 

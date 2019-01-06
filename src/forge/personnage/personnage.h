@@ -13,17 +13,25 @@ class personnage : public entite {
         // défaut : 15
         int pdv;
         // 0 nord, 1 est, 2 sud, 3 ouest
-        int orientation;
+        // int orientation;
         // défaut : "poing", force = 1, portée=1
         shared_ptr<arme> a;
     public:
+        enum direction
+        {
+            nord,
+            est,
+            sud,
+            ouest
+        };
         personnage(Terrain& t, int x = -1, int y = -1);
         ~personnage();
         int getX();
         int getY();
+        int get_pdv();
         void changerOrientation(int orientation);
         void tir(Terrain& t, int angle);
-
+        int orientation;
         // 1 si le personnage a réussi à bouger, 0 sinon
         int mouv(Terrain& t);
 

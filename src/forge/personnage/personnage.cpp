@@ -14,7 +14,7 @@ personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new
 	if(y == -1)
         y = rand() % t.getY();
     pdv = 15;
-    orientation = 0;
+    orientation = nord;
 
     // tant qu'il y a quelque chose sur les coordonnées (x,y) on cherche un autre emplacement sur le terrain où placer le personnage
     while(t.getEntite(x, y) != nullptr){
@@ -29,6 +29,10 @@ personnage::~personnage(){};
 
 int personnage::getX(){
     return x;
+};
+
+int personnage::get_pdv(){
+    return pdv;
 };
 
 int personnage::getY(){
