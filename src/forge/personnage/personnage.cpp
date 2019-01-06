@@ -8,11 +8,9 @@ using namespace std;
 #include "../entite/entite.h"
 #include "personnage.h"
 
-personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new arme("poing", 1, 1)), x(x), y(y){
-	if(x == -1)
-        x = rand() % t.getX();
-	if(y == -1)
-        y = rand() % t.getY();
+personnage::personnage(Terrain& t): entite("personnage", 0), a(new arme("poing", 1, 1)){
+    x = rand() % t.getX();
+    y = rand() % t.getY();
     pdv = 15;
     orientation = nord;
 
@@ -24,6 +22,12 @@ personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new
     }
     t.ajoutEntite(*this, x, y);
 };
+
+personnage::personnage(Terrain& t, int x, int y): entite("personnage", 0), a(new arme("poing", 1, 1)), x(x), y(y){
+    pdv = 15;
+    orientation = 0;
+    t.ajoutEntite(*this, x, y);
+}
 
 personnage::~personnage(){};
 
@@ -45,10 +49,11 @@ void personnage::changerOrientation(int orientation){
 
 int personnage::mouv(Terrain& t){
     int deplace = 0;
-
+    cout << "mouv";
     switch(orientation){
         case 0:
             if(t.getEntite(x,y+1) == nullptr){
+                cout << "north case" << endl;
                 t.ajoutEntite(*this, x, y+1);
                 t.retireEntite(x,y);
                 deplace = 1;
