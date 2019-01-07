@@ -35,7 +35,7 @@ class personnage : public entite {
         bool get_tour();
         int getOrientation();
         void changerOrientation(int orientation);
-        void tir(Terrain& t, int angle);
+        int tir(Terrain& t);
         int orientation;
         // 1 si le personnage a réussi à bouger, 0 sinon
         int mouv(Terrain& t);

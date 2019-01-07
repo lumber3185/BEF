@@ -8,12 +8,11 @@ using namespace std;
 
 class entite {
 	protected:
-		int force;
+		int force, portee;
 		string type;
 	public:
-		entite(string t, int f);
+		entite(string t = "", int f = 0, int p = 0);
 		~entite();
-		void subirDegats();
 		int getForce();
 		int getPortee();
 		string getType();

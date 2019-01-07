@@ -31,7 +31,7 @@ void IA::mouvance(Terrain& t){
 
     // 1 chance sur 2 de tirer
     if(aleatir){
-        tir(t, 45);
+        tir(t);
     }
 
 };
