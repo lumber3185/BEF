@@ -76,11 +76,19 @@ void Editeur::rmv() {
 };
 
 void Editeur::saveLevel() {
-	cout << "Sauvegarde réussie" << endl;
+	string name = "tmp";
+	cout << "Entrer le nom du fichier à sauvegarder" << endl;
+	cin >> name;
+	FileManager f(name,"terrain");
+	f.saveTerrain(this->plateau,name);
 };
 
 void Editeur::loadLevel() {
-	cout << "Chargement réussi" << endl;
+	string name = "default";
+	cout << "Entrer le nom du fichier à charger" << endl;
+	cin >> name;
+	FileManager f(name,"terrain");
+	f.loadTerrain(this->plateau);
 };
 
 ostream& operator<<(ostream& flux, Editeur& e) {
