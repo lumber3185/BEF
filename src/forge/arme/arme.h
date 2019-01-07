@@ -4,14 +4,10 @@
 #include "../entite/entite.h"
 
 class arme : public entite{
-	private:
-		int portee;
 	public:
-		arme(string t = "arme", int p = 0, int f = -1);
+		arme(string t = "arme", int p = 0, int f = 0);
 		arme(arme& copie);
 		~arme();
-		void subirDegats();
-		int getPortee();
 		void setPortee(int p);
 };
 

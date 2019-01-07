@@ -22,7 +22,7 @@ class personnage : public entite {
         int getX();
         int getY();
         void changerOrientation(int orientation);
-        void tir(Terrain& t, int angle);
+        int tir(Terrain& t);
 
         // 1 si le personnage a réussi à bouger, 0 sinon
         int mouv(Terrain& t);

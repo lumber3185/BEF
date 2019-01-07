@@ -133,8 +133,44 @@ int personnage::ramasser(Terrain& t){
     return 0;
 };
 
-void personnage::tir(Terrain& t, int angle){
-
+int personnage::tir(Terrain& t){
+	for(int i=1; i <= a->getPortee(); i++) {
+		switch(orientation) {
+		case 0:
+			if(t.getEntite(x,y+i) != nullptr) {
+				t.getEntite(x,y+i)->setForce(t.getEntite(x,y+i)->getForce() - a->getForce());
+				if(t.getEntite(x,y+i)->getForce() <= 0)
+					t.retireEntite(x,y+i);
+				return 1;
+			}
+			break;
+		case 1:
+			if(t.getEntite(x+i,y) != nullptr) {
+				t.getEntite(x+i,y)->setForce(t.getEntite(x+i,y)->getForce() - a->getForce());
+				if(t.getEntite(x+i,y)->getForce() <= 0)
+					t.retireEntite(x+i,y);
+				return 1;
+			}
+			break;
+		case 2:
+			if(t.getEntite(x,y-i) != nullptr) {
+				t.getEntite(x,y-i)->setForce(t.getEntite(x,y-i)->getForce() - a->getForce());
+				if(t.getEntite(x,y-i)->getForce() <= 0)
+					t.retireEntite(x,y-i);
+				return 1;
+			}
+			break;
+		case 3:
+			if(t.getEntite(x-i,y) != nullptr) {
+				t.getEntite(x-i,y)->setForce(t.getEntite(x-i,y)->getForce() - a->getForce());
+				if(t.getEntite(x-i,y)->getForce() <= 0)
+					t.retireEntite(x-i,y);
+				return 1;
+			}
+			break;
+		}
+	}
+	return 0;
 };
 
 ostream& operator<<(ostream& flux, personnage& p){

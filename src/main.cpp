@@ -45,7 +45,18 @@ int main(){
 	p.ramasser(t);
 	cout << t << endl;
 	cout << p << endl;
-	
+
+	obstacle o("rocher",6);
+	t.ajoutEntite(o,3,3);
+
+	cout << t << endl;
+	cout << p << endl;
+
+	p.tir(t);
+	cout << t << endl;
+	cout << p << endl;
+	cout << t.getEntite(3,3)->getForce() << endl; // C'est n'est pas le même rocher que o !!! (constructeur de copie) !!!
+
 	//cout << editeur << endl;
 /*
 	sf::RenderWindow window;
