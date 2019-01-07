@@ -16,7 +16,8 @@ Play_submenu::Play_submenu(float width, float height){
         submenu[i].setCharacterSize(24);
         submenu[i].setFillColor(sf::Color::Red);
         sf::FloatRect textRect = submenu[i].getLocalBounds();
-        submenu[i].setPosition((width/2)- textRect.width, height/(NUMBER_OF_OPTIONS+1)*i);
+        submenu[i].setOrigin(textRect.left + textRect.width/2 , textRect.top + textRect.height/2);
+        submenu[i].setPosition(sf::Vector2f(width/2, height / (NUMBER_OF_OPTIONS + 1) * (i+1)));
     }
 }
 

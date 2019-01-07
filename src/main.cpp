@@ -124,6 +124,12 @@ int main(){
 			}
 			else{
 				worldgui.draw(window, t, p1, ia);
+				if(ia.get_tour() == 1 && p1.get_tour() == 0){
+                	ia.mouvance(t);
+                	ia.set_tour(0);
+                	p1.set_tour(1);
+					cout << ia << "IA" << endl;
+            	}
 			}
 		}
 

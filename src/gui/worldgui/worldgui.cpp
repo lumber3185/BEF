@@ -258,18 +258,12 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::ouest);
             }
-            else if(ia.get_tour() == 1){
-                ia.changerOrientation(personnage::ouest);
-            }
             cout << p1 << endl;
         break;
         case sf::Keyboard::D:
             std::cout << "pressed est" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::est);
-            }
-            else if(ia.get_tour() == 1){
-                ia.changerOrientation(personnage::est);
             }
             cout << p1 << endl;
         break;
@@ -278,18 +272,12 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::nord);
             }
-            else if(ia.get_tour() == 1){
-                ia.changerOrientation(personnage::nord);
-            }
             cout << p1 << endl;
         break;
         case sf::Keyboard::S:
         std::cout << "pressed south" << std::endl;
             if (p1.get_tour() == 1){
                 p1.changerOrientation(personnage::sud);
-            }
-            else if(ia.get_tour() == 1){
-                ia.changerOrientation(personnage::sud);
             }
         cout << p1 << endl;
         break;
@@ -299,11 +287,6 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
                 p1.mouv(t);
                 p1.set_tour(0);
                 ia.set_tour(1);
-            }
-            else if(ia.get_tour() == 1){
-                ia.mouvance(t);
-                ia.set_tour(0);
-                p1.set_tour(1);
             }
             
         break;

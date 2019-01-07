@@ -19,6 +19,7 @@ void IA::mouvance(Terrain& t){
     // 4 chances sur 8 de tourner
     if(aleaturn < 4){
         changerOrientation(aleaturn);
+        mouv(t);
     }
     else{}
 
