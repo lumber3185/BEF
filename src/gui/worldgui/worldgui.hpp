@@ -2,6 +2,7 @@
 #define worldgui_HPP
 #include "../../forge/terrain/Terrain.h"
 #include "../../forge/personnage/personnage.h"
+#include "../../forge/IA/IA.h"
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
@@ -28,6 +29,7 @@ sf::Texture get_Texture_grass1();
 void draw(sf::RenderWindow &window,Terrain T,personnage p1, personnage p2);
 
 void event_handler(sf::Event event,Terrain &t, personnage &p1, personnage &p2);
+void event_handler(sf::Event event, Terrain &t, personnage &p1, IA &ia);
 
 void set_IsOn(bool i);
 void set_IAOn(bool i);
