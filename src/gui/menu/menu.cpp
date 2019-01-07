@@ -64,7 +64,7 @@ void Menu::draw(sf::RenderWindow &window){
         }
 }
 
-void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur){
+void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, Play_submenu &play_submenu){
     switch (event.key.code){
         case sf::Keyboard::Z :
             MoveUp();
@@ -84,7 +84,8 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur){
 		            std::cout << "Play button has been pressed" << std::endl;
                     //action :
                     this->is_on = 0;
-                    worldgui.set_IsOn(1);
+                    play_submenu.set_IsOn(1);
+                    worldgui.set_IsOn(0);
                     editeur.set_IsOn(0);
 					break;
 				case 1:

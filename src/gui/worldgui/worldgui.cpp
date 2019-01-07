@@ -7,6 +7,7 @@ Worldgui::Worldgui(int input_width, int input_height, Terrain T){
     this->width = input_width;
     //off by default
     this->is_on = 0;
+    this->ia_mode = 0;
 
     sizeoftile_x = width/T.getX();
     sizeoftile_y = height/T.getY();
@@ -58,10 +59,10 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
     if(!bazooka.loadFromFile("res/sprites/tank_bullet3.png")){
         cerr << "failed to load bazooka";
     }
-    if(!perso1.loadFromFile("res/sprites/survivor1_stand.png")){
+    if(!perso1.loadFromFile("res/sprites/survivor1_gun.png")){
         cerr << "failed to load perso1";
     }
-    if(!perso2.loadFromFile("res/sprites/hitman1_stand.png")){
+    if(!perso2.loadFromFile("res/sprites/hitman1_gun.png")){
         cerr << "failed to load perso2";
     }
 
@@ -180,7 +181,6 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
 }
 
 void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personnage &p2){
-    
     switch (event.key.code)
     {
         case sf::Keyboard::Space:
@@ -188,27 +188,57 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
             break;
         case sf::Keyboard::Q:
             std::cout << "pressed ouest" << std::endl;
-            p1.changerOrientation(personnage::ouest);
+            if(p1.get_tour() == 1){
+                p1.changerOrientation(personnage::ouest);
+            }
+            else if(p2.get_tour() == 1){
+                p2.changerOrientation(personnage::ouest);
+            }
             cout << p1 << endl;
         break;
         case sf::Keyboard::D:
             std::cout << "pressed est" << std::endl;
-            p1.changerOrientation(personnage::est);
+            if(p1.get_tour() == 1){
+                p1.changerOrientation(personnage::est);
+            }
+            else if(p2.get_tour() == 1){
+                p2.changerOrientation(personnage::est);
+            }
             cout << p1 << endl;
         break;
         case sf::Keyboard::Z:
             std::cout << "pressed north" << std::endl;
-            p1.changerOrientation(personnage::nord);
+            if(p1.get_tour() == 1){
+                p1.changerOrientation(personnage::nord);
+            }
+            else if(p2.get_tour() == 1){
+                p2.changerOrientation(personnage::nord);
+            }
             cout << p1 << endl;
         break;
         case sf::Keyboard::S:
         std::cout << "pressed south" << std::endl;
-            p1.changerOrientation(personnage::sud);
-            cout << p1 << endl;
+            if (p1.get_tour() == 1){
+                p1.changerOrientation(personnage::sud);
+            }
+            else if(p2.get_tour() == 1){
+                p2.changerOrientation(personnage::sud);
+            }
+        cout << p1 << endl;
         break;
         case sf::Keyboard::Enter:
         std::cout << "moving" << endl;
-            p1.mouv(t);
+            if(p1.get_tour() == 1){
+                p1.mouv(t);
+                p1.set_tour(0);
+                p2.set_tour(1);
+            }
+            else if(p2.get_tour() == 1){
+                p2.mouv(t);
+                p2.set_tour(0);
+                p1.set_tour(1);
+            }
+            
         break;
         default:
             std::cout << "default key pressed" << std::endl;
@@ -219,6 +249,10 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
 
 void Worldgui::set_IsOn(bool i){
     this->is_on = i;
+}
+
+void Worldgui::set_IAOn(bool i){
+    this->ia_mode = i;
 }
 
 Worldgui::~Worldgui(){

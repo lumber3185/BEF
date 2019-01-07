@@ -4,6 +4,7 @@
 #include <iostream>
 #include "../worldgui/worldgui.hpp"
 #include "../../forge/editeur/Editeur.h"
+#include "../play_submenu/play_submenu.hpp"
 
 #define MAX_NUMBER_OF_ITEMS 3
 
@@ -26,7 +27,7 @@ public:
     //Renvoi de l'item selectionne
     int GetPressedItem();
 
-    void event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur);
+    void event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, Play_submenu &play_submenu);
     ~Menu();
 };
 

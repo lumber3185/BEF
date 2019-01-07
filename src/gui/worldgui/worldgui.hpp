@@ -17,6 +17,7 @@ private:
 public:
     
     bool is_on;
+    bool ia_mode;
     
 
 Worldgui(int width, int height, Terrain T);
@@ -29,6 +30,7 @@ void draw(sf::RenderWindow &window,Terrain T,personnage p1, personnage p2);
 void event_handler(sf::Event event,Terrain &t, personnage &p1, personnage &p2);
 
 void set_IsOn(bool i);
+void set_IAOn(bool i);
 
 void draw_a_tile(string type);
 ~Worldgui();
