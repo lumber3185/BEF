@@ -59,8 +59,8 @@ void Editeur::user_action(sf::Event event) {
 void Editeur::move(string direction) {
 	// /!\ Missing bound check
 	if(direction ==  "up" && PosY>0) PosY--;//inverted
-	else if(direction == "right" && PosX<plateau.getX()) PosX++;
-	else if(direction == "down" && PosY<plateau.getY()) PosY++;//inverted
+	else if(direction == "right" && PosX<plateau.getX()-1) PosX++;
+	else if(direction == "down" && PosY<plateau.getY()-1) PosY++;//inverted
 	else if(direction == "left" && PosX>0) PosX--;
 	else cout << "Out of bounds or invalid direction" << endl;
 };

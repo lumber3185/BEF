@@ -16,7 +16,7 @@ FileManager::FileManager(string FileName, string t) : name(FileName), type(t) {
     if(type == "terrain" || type == "obstacle"){
         path = "./res/sav/" + type +"/" + FileName + ".txt";
     }
-    else cout << "Vous pouvez placer les entités: petitarbre, grosarbre, petitrocher, grosrocher, pistolet, bazooka"
+    else cout << "Vous pouvez placer les entités: petitarbre, grosarbre, petitrocher, grosrocher, pistolet, bazooka" << endl;
 };
 
 FileManager::~FileManager() {};
