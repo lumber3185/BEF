@@ -78,13 +78,13 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
             if(gen()){ //display two types of grass
                     grass[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     grass[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
-                    grass[x][y].setOutlineThickness(1.f);
+                    //grass[x][y].setOutlineThickness(1.f); //dessine le contour des cases
                     grass[x][y].setTexture(&grass1);
                 }
                 else{
                     grass[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     grass[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
-                    grass[x][y].setOutlineThickness(1.f);
+                    //grass[x][y].setOutlineThickness(1.f); //dessine le contour des cases
                     grass[x][y].setTexture(&grass2);
                 }
 
