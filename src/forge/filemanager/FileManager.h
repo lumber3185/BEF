@@ -22,21 +22,28 @@ class FileManager {
 		string type;
 
 	public:
+
+		// crée un filemanager qui gère un fichier denom filename et de type t(terrain, entite, obstacle, arme...)
 		FileManager(string filename, string t);
+		
 		~FileManager();
+
+		// renvoie le nom du fichier que gère le filemanager
 		string getName();
 
-		// ouvre un fichier en lecture et renvoit le terrain correspondant, lance exceptionz
+		// ouvre un fichier en lecture et renvoit le terrain correspondant, lance une exception si une erreur a lieu
 		void loadTerrain(Terrain& t);
 		
-		// crée un fichier savname correspondant à t, si fichier existant, écrase le fichier existant
+		// crée un fichier de nom 'savname' correspondant à t, si fichier existant, écrase le fichier existant
 		void saveTerrain(Terrain T, string savname);
 
-		// crée une entité correspondant au nom de l'entité en argument, lance des exceptions
+		// Cherche dans le dossier res/sav/obstacle l'obstacle en argument et le retourne
 		obstacle& loadObstacle(string entityname);
 
+		// Cherche dans le dossier res/sav/arme l'arme en argument et la retourne
 		arme& loadArme(string entityname);
 
+		// retourne un pointeur correspondant au nom de l'entité en argument, utilise les méthodes loadArme et loadObstacle
 		shared_ptr<entite> loadEntity(string entityname);
 };
 

@@ -14,6 +14,8 @@ class IA : public personnage {
     public:
         IA(Terrain& t);
         ~IA();
+
+        // Fait s'orienter, bouger et tirer l'IA de manière aléatoire
         void mouvance(Terrain& t);
 };
 

@@ -16,14 +16,13 @@ FileManager::FileManager(string FileName, string t) : name(FileName), type(t) {
     if(type == "terrain" || type == "obstacle"){
         path = "./res/sav/" + type +"/" + FileName + ".txt";
     }
-    else cerr << "Entrez un type de fichier valide : terrain, obstacle \n";
+    else cout << "Vous pouvez placer les entités: petitarbre, grosarbre, petitrocher, grosrocher, pistolet, bazooka"
 };
 
 FileManager::~FileManager() {};
 
 string FileManager::getName() { return name; };
 
-// loader un terrain de taille correspondante au terrain à qui il sera affecté sinson exception d'index
 void FileManager::loadTerrain(Terrain& tm){
     ifstream fichier(path, ios::in);
     if(fichier){
@@ -64,41 +63,6 @@ void FileManager::loadTerrain(Terrain& tm){
     else throw "Not a filename to a saved 'terrain'\n";
 }
 
-obstacle& FileManager::loadObstacle(string efilename){
-    path = "./res/sav/obstacle/" + efilename + ".txt";
-    ifstream fichier(path);
-    if(fichier){
-        string t; int f;
-        fichier >> t >> f;
-        obstacle* o = new obstacle(t,f);
-        return *o;
-    }
-    else throw "FileName Incorrect";
-}
-
-arme& FileManager::loadArme(string efilename){
-    path = "./res/sav/arme/" + efilename + ".txt";
-    ifstream fichier(path);
-    if(fichier){
-        string t; int p,f;
-        fichier >> t >> p >> f;
-        arme* a = new arme(t,p,f);
-        return *a;
-    }
-    else throw "FileName Incorrect";
-}
-
-shared_ptr<entite> FileManager::loadEntity(string entityname){
-    shared_ptr<entite> ret; 
-    if(entityname == "bazooka" || entityname == "pistolet"){
-        ret.reset(new arme(loadArme(entityname)));
-    }
-    else if(entityname == "petitarbre" || entityname == "grosarbre" || entityname == "petitrocher" || entityname == "grosrocher"){
-        ret.reset(new obstacle(loadObstacle(entityname)));
-    }
-    return ret;
-}
-
 void FileManager::saveTerrain(Terrain T, string savname){
     string nomdesav = savname + ".txt";
     path = "./res/sav/terrain/" + nomdesav;
@@ -122,3 +86,39 @@ void FileManager::saveTerrain(Terrain T, string savname){
         }
     }
 }
+
+obstacle& FileManager::loadObstacle(string efilename){
+    path = "./res/sav/obstacle/" + efilename + ".txt";
+    ifstream fichier(path);
+    if(fichier){
+        string t; int f;
+        fichier >> t >> f;
+        obstacle* o = new obstacle(t,f);
+        return *o;
+    }
+    else throw "Les entites sont: petitrocher, grosrocher, petitarbre, grosarbre, pistolet, bazooka";
+}
+
+arme& FileManager::loadArme(string efilename){
+    path = "./res/sav/arme/" + efilename + ".txt";
+    ifstream fichier(path);
+    if(fichier){
+        string t; int p,f;
+        fichier >> t >> p >> f;
+        arme* a = new arme(t,p,f);
+        return *a;
+    }
+    else throw "Les entites sont: petitrocher, grosrocher, petitarbre, grosarbre, pistolet, bazooka";
+}
+
+shared_ptr<entite> FileManager::loadEntity(string entityname){
+    shared_ptr<entite> ret; 
+    if(entityname == "bazooka" || entityname == "pistolet"){
+        ret.reset(new arme(loadArme(entityname)));
+    }
+    else if(entityname == "petitarbre" || entityname == "grosarbre" || entityname == "petitrocher" || entityname == "grosrocher"){
+        ret.reset(new obstacle(loadObstacle(entityname)));
+    }
+    return ret;
+}
+
