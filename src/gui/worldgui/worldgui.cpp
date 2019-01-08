@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #include "worldgui.hpp"
 #include <random>
 #include <functional>
@@ -14,6 +17,7 @@ Worldgui::Worldgui(int input_width, int input_height, Terrain T){
 }
 
 void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personnage p2){
+    //Fonction d'affichage du terrain, longue mais simple
     
     //generate random bool
     auto gen = std::bind(std::uniform_int_distribution<>(0,1), std::default_random_engine());
@@ -84,7 +88,7 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                     grass[x][y].setTexture(&grass2);
                 }
 
-            if(T.getEntite(x,y) != nullptr){
+            if(T.getEntite(x,y) != nullptr){//affichage des differentes entites
                 if(T.getEntite(x,y)->getType() == "grosarbre"){
                     objects[x][y].setSize(sf::Vector2f(sizeoftile_x, sizeoftile_y));
                     objects[x][y].setPosition(x*sizeoftile_x, y*sizeoftile_y);
@@ -116,10 +120,11 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                     objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                     objects[x][y].setTexture(&bazooka);
                 }
-                if(T.getEntite(x,y)->getType() == "personnage"){
+                if(T.getEntite(x,y)->getType() == "personnage"){ 
+                    //impossible de différencier un personnage d'un autre sans le if suivant:
                     if(p1.getX()==x && p1.getY()==y){ //check if this is p1
                         objects[x][y].setSize(sf::Vector2f(sizeoftile_x/2, sizeoftile_y/2));
-                        switch (p1.getOrientation())
+                        switch (p1.getOrientation()) //pour l orientation du sprite
                         {   
                             case personnage::nord:
                                 objects[x][y].rotate(270.f);
@@ -172,10 +177,11 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
     }
 }
 
-void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personnage &p2){
+void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personnage &p2){//gere les evenement en fonctions des touches pressees ainsi que les tours
+    //version pour 2 persos (sans IA)
     switch (event.key.code)
     {
-        case sf::Keyboard::Space:
+        case sf::Keyboard::Space: //tir
             std::cout << "Tir !" << std::endl;
             if(p1.get_tour() == 1){
                 p1.tir(t);
@@ -189,7 +195,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
                 p1.set_tour(1);
             }
             break;
-        case sf::Keyboard::Q:
+        case sf::Keyboard::Q://gauche
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::ouest);
             }
@@ -197,7 +203,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
                 p2.changerOrientation(personnage::ouest);
             }
         break;
-        case sf::Keyboard::D:
+        case sf::Keyboard::D://droite
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::est);
             }
@@ -205,7 +211,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
                 p2.changerOrientation(personnage::est);
             }
         break;
-        case sf::Keyboard::Z:
+        case sf::Keyboard::Z://haut
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::nord);
             }
@@ -213,7 +219,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
                 p2.changerOrientation(personnage::nord);
             }
         break;
-        case sf::Keyboard::S:
+        case sf::Keyboard::S://bas
             if (p1.get_tour() == 1){
                 p1.changerOrientation(personnage::sud);
             }
@@ -221,7 +227,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
                 p2.changerOrientation(personnage::sud);
             }
         break;
-        case sf::Keyboard::Enter:
+        case sf::Keyboard::Enter://se deplacer
             if(p1.get_tour() == 1){
                 p1.mouv(t);
                 p1.set_tour(0);
@@ -239,37 +245,39 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
     }
 }
 
-void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
+void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){//gere les evenement en fonctions des touches pressees ainsi que les tours
+    //version pour une IA et un perso
     switch (event.key.code)
     {
-        case sf::Keyboard::Space:
+        case sf::Keyboard::Space://tir
+            std::cout << "Tir !" << std::endl;
             if(p1.get_tour() == 1){
                 p1.tir(t);
                 p1.set_tour(0);
                 ia.set_tour(1);
             }
             break;
-        case sf::Keyboard::Q:
+        case sf::Keyboard::Q: //gauche
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::ouest);
             }
         break;
-        case sf::Keyboard::D:
+        case sf::Keyboard::D: //droite
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::est);
             }
         break;
-        case sf::Keyboard::Z:
+        case sf::Keyboard::Z: //haut
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::nord);
             }
         break;
-        case sf::Keyboard::S:
+        case sf::Keyboard::S: //bas
             if (p1.get_tour() == 1){
                 p1.changerOrientation(personnage::sud);
             }
         break;
-        case sf::Keyboard::Enter:
+        case sf::Keyboard::Enter: //se deplacer
             if(p1.get_tour() == 1){
                 p1.mouv(t);
                 p1.set_tour(0);

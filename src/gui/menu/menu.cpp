@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #include "menu.hpp"
 
 
@@ -9,7 +12,7 @@ Menu::Menu(float width, float height){
         exit(1);
     }
     this->is_on = 1;
-    
+    //chaque item du menu est crée un par un
     menu[0].setFont(font);
     menu[0].setFillColor(sf::Color::Red);
     menu[0].setString("Play");
@@ -26,7 +29,7 @@ Menu::Menu(float width, float height){
 
     menu[2].setFont(font);
     menu[2].setFillColor(sf::Color::White);
-    menu[2].setString("Test");
+    menu[2].setString("Tests (terminal)");
     textRect = menu[2].getLocalBounds();
     menu[2].setOrigin(textRect.left + textRect.width/2, textRect.top + textRect.height/2);
     menu[2].setPosition(sf::Vector2f(width/2, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
@@ -38,7 +41,7 @@ Menu::Menu(float width, float height){
 
 }
 
-void Menu::MoveUp(){
+void Menu::MoveUp(){ //Effet de changement de couleur du menu
     if(selectItemIndex - 1 >= 0){
         menu[selectItemIndex].setFillColor(sf::Color::White);
         selectItemIndex--;
@@ -46,7 +49,7 @@ void Menu::MoveUp(){
     }
 }
 
-void Menu::MoveDown(){
+void Menu::MoveDown(){//Effet de changement de couleur du menu
     if(selectItemIndex + 1 < MAX_NUMBER_OF_ITEMS){
         menu[selectItemIndex].setFillColor(sf::Color::White);
         selectItemIndex++;
@@ -58,13 +61,13 @@ int Menu::GetPressedItem(){
     return selectItemIndex;
 }
 
-void Menu::draw(sf::RenderWindow &window){
+void Menu::draw(sf::RenderWindow &window){//dessine les items du menu
         for(int i=0 ; i < MAX_NUMBER_OF_ITEMS; i++){
             window.draw(menu[i]);
         }
 }
 
-void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, Play_submenu &play_submenu){
+void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, Play_submenu &play_submenu){//gere les actions effectuees en fonction des touches pressees
     switch (event.key.code){
         case sf::Keyboard::Z :
             MoveUp();

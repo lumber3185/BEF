@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #include "Editeur.h"
 
 using namespace std;
@@ -49,7 +52,6 @@ void Editeur::user_action(sf::Event event) {
 			rmv();
 			break;
 		default:
-			std::cout << "unbound key" << std::endl;
 			break;
 	}
 }

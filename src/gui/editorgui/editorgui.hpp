@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #ifndef editorgui_HPP
 #define editorgui_HPP
 #include "../../forge/editeur/Editeur.h"
@@ -5,6 +8,8 @@
 #include "SFML/Graphics.hpp"
 
 #define MAX_NUMBER_OF_KEYS 4
+
+//Partie graphique de l'editeur
 
 class Editorgui {
     private:

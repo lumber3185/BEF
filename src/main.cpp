@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #include <iostream>
 #include <fstream>
 #include <string.h>
@@ -101,7 +104,6 @@ int main(){
                 	ia.mouvance(t);
                 	ia.set_tour(0);
                 	p1.set_tour(1);
-					cout << ia << "IA" << endl;
             	}
 			}
 		}

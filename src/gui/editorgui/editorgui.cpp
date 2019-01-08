@@ -1,3 +1,7 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
+
 #include "editorgui.hpp"
 
 Editorgui::Editorgui(int input_width, int input_height, Terrain T){
@@ -12,21 +16,23 @@ Editorgui::Editorgui(int input_width, int input_height, Terrain T){
         exit(1);
     }
 
-    help[0].setString("A : add");
-    help[1].setString("E : remove");
-    help[2].setString("L : Load Level");
-    help[3].setString("W : save");
+    //Initialisation du texte
+    help[0].setString("A : Add (terminal)");
+    help[1].setString("E : Remove");
+    help[2].setString("L : Load Level (terminal)");
+    help[3].setString("W : Save (terminal)");
     
+    //placement du texte
     for(int i = 0; i < MAX_NUMBER_OF_KEYS; i++){
         help[i].setFont(font);
-        help[i].setCharacterSize(24);
+        help[i].setCharacterSize(18);
         help[i].setFillColor(sf::Color::Black);
         sf::FloatRect textRect = help[i].getLocalBounds();
         help[i].setPosition((width - 10)- textRect.width, 100 +100*i);
     }
 }
 
-void Editorgui::draw(sf::RenderWindow &window, Editeur &editeur){
+void Editorgui::draw(sf::RenderWindow &window, Editeur &editeur){//fonction d'affichage de l'interface editeur
     sf::RectangleShape red;
     red.setOutlineThickness(5.f);
     red.setFillColor(sf::Color(0,0,0,0));

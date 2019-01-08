@@ -1,3 +1,6 @@
+//GONICHON Lucas 21504002//
+//LE ROUX Amélie 21600230//
+//JACQUET Julien 21400579//
 #ifndef worldgui_HPP
 #define worldgui_HPP
 #include "../../forge/terrain/Terrain.h"
@@ -6,6 +9,7 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
+//Gere l'affichage du terrain
 
 class Worldgui
 {
