@@ -134,14 +134,6 @@ int main(){
 		}
 
 		window.display();
-		/*
-		cout << "########" << endl;
-		cout << p1 << "IN MAIN" << endl;
-		cout << t << "IN MAIN" << endl;
-		cout << "########" << endl;
-		*/
-		usleep(1000000);
-
 	}
 	
 	return 0;

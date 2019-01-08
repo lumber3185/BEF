@@ -26,19 +26,21 @@ add_library(editorgui STATIC src/gui/editorgui/editorgui.hpp src/gui/editorgui/e
 add_library(personnage STATIC src/forge/personnage/personnage.h src/forge/personnage/personnage.cpp)
 add_library(IA STATIC src/forge/IA/IA.h src/forge/IA/IA.cpp)
 add_library(play_submenu STATIC src/gui/play_submenu/play_submenu.hpp src/gui/play_submenu/play_submenu.cpp)
+add_library(test STATIC test/test.hpp test/test.cpp)
 
 #linkage des librairies
 target_link_libraries(arme PUBLIC entite)
 target_link_libraries(obstacle PUBLIC entite)
 target_link_libraries(terrain PUBLIC entite obstacle arme personnage)
 target_link_libraries(filemanager PUBLIC entite terrain)
-target_link_libraries(menu PUBLIC worldgui editeur)
+target_link_libraries(menu PUBLIC worldgui editeur test)
 target_link_libraries(worldgui PUBLIC terrain personnage)
 target_link_libraries(editeur PUBLIC terrain filemanager)
 target_link_libraries(editorgui PUBLIC terrain editeur)
 target_link_libraries(personnage PUBLIC entite terrain arme)
 target_link_libraries(IA PUBLIC personnage terrain arme entite)
 target_link_libraries(play_submenu PUBLIC filemanager)
+target_link_libraries(test PUBLIC terrain filemanager editeur personnage IA)
 
 #exec final
 #NE PAS TOUCHER
@@ -46,4 +48,4 @@ add_executable(bef src/main.cpp)
 
 #linkage des modules :
 #ajouter le nom du module de "modules :" apres "PUBLIC"
-target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle worldgui editeur editorgui personnage IA play_submenu) #ajouter un nom de module apres PUBLIC (separe par un espace)
+target_link_libraries(bef PUBLIC sfml-graphics sfml-audio sfml-window sfml-system menu entite arme filemanager terrain obstacle worldgui editeur editorgui personnage IA play_submenu test) #ajouter un nom de module apres PUBLIC (separe par un espace)

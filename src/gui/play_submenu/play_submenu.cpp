@@ -34,7 +34,12 @@ void Play_submenu::event_handler(sf::Event event, Terrain &t, Worldgui &worldgui
             std::cout << "Enter name of file to load" << std::endl;
             std::cin >> filename;
             FileManager f(filename, "terrain");
+            try{
             f.loadTerrain(t);
+            }
+            catch(const char* msg){
+                cerr << msg;
+            }
             break; }
         case sf::Keyboard::I :
             std::cout << "Player vs IA" << std::endl;

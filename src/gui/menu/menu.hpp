@@ -5,6 +5,7 @@
 #include "../worldgui/worldgui.hpp"
 #include "../../forge/editeur/Editeur.h"
 #include "../play_submenu/play_submenu.hpp"
+#include "../../../test/test.hpp"
 
 #define MAX_NUMBER_OF_ITEMS 3
 

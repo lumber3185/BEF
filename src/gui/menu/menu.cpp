@@ -97,9 +97,8 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, 
 					break;
 				case 2:
 					std::cout << "Test button has been pressed" << std::endl;
-					//action :
-                    
                     this->is_on = 0;
+                    tests();
                     break;
                 default:
                     std::cout << "touche inconnue" << std::endl;

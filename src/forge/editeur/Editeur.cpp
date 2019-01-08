@@ -80,7 +80,12 @@ void Editeur::saveLevel() {
 	cout << "Entrer le nom du fichier à sauvegarder" << endl;
 	cin >> name;
 	FileManager f(name,"terrain");
-	f.saveTerrain(this->plateau,name);
+	try{
+		f.saveTerrain(this->plateau,name);
+	}
+	catch(const char* msg){
+		cerr << msg;
+	}
 };
 
 void Editeur::loadLevel() {
@@ -88,7 +93,12 @@ void Editeur::loadLevel() {
 	cout << "Entrer le nom du fichier à charger" << endl;
 	cin >> name;
 	FileManager f(name,"terrain");
-	f.loadTerrain(this->plateau);
+	try{
+		f.loadTerrain(this->plateau);
+	}
+	catch(const char* msg){
+		cerr << msg;
+	}
 };
 
 ostream& operator<<(ostream& flux, Editeur& e) {

@@ -185,6 +185,17 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
     {
         case sf::Keyboard::Space:
             std::cout << "pressed space" << std::endl;
+            if(p1.get_tour() == 1){
+                p1.tir(t);
+                p1.set_tour(0);
+                p2.set_tour(1);
+            }
+            else if (p2.get_tour() == 1)
+            {
+                p2.tir(t);
+                p2.set_tour(0);
+                p1.set_tour(1);
+            }
             break;
         case sf::Keyboard::Q:
             std::cout << "pressed ouest" << std::endl;
@@ -252,6 +263,11 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
     {
         case sf::Keyboard::Space:
             std::cout << "pressed space" << std::endl;
+            if(p1.get_tour() == 1){
+                p1.tir(t);
+                p1.set_tour(0);
+                ia.set_tour(1);
+            }
             break;
         case sf::Keyboard::Q:
             std::cout << "pressed ouest" << std::endl;
