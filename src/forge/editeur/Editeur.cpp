@@ -23,6 +23,7 @@ Terrain Editeur::getPlateau() const {
 	return plateau;
 }
 
+//récupère un input du clavier et appelle une fonction correspondante
 void Editeur::user_action(sf::Event event) {
 	
 	switch (event.key.code)
@@ -57,10 +58,9 @@ void Editeur::user_action(sf::Event event) {
 }
 
 void Editeur::move(string direction) {
-	// /!\ Missing bound check
-	if(direction ==  "up" && PosY>0) PosY--;//inverted
+	if(direction ==  "up" && PosY>0) PosY--;
 	else if(direction == "right" && PosX<plateau.getX()-1) PosX++;
-	else if(direction == "down" && PosY<plateau.getY()-1) PosY++;//inverted
+	else if(direction == "down" && PosY<plateau.getY()-1) PosY++;
 	else if(direction == "left" && PosX>0) PosX--;
 	else cout << "Out of bounds or invalid direction" << endl;
 };
@@ -103,6 +103,7 @@ void Editeur::loadLevel() {
 	}
 };
 
+//donne les coordonnées de l'éditeur
 ostream& operator<<(ostream& flux, Editeur& e) {
 	flux << "editeur aux coordonnées : " << e.getPosX() << ", " << e.getPosY() << endl;
 	return flux;

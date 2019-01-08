@@ -26,7 +26,7 @@ int Terrain::getY(){ return SizeY; };
 
 void Terrain::retireEntite(int i, int j) {
 	if(i < SizeX && i > 0 && j < SizeY && j > 0) {
-		grille[i][j].reset();
+		grille[i][j].reset();	//reset() sans argument permet de faire pointer grille[i][j] sur nullptr
 	}
 };
 
@@ -34,6 +34,7 @@ shared_ptr<entite> Terrain::getEntite(int x, int y) {
 	return grille[x][y];
 };
 
+//affiche les dimensions de la matrice et les objets contenus dedans
 ostream& operator<<(ostream& flux, Terrain &t) {
 	flux << "Dimensions du terrain : " << t.SizeX << ", " << t.SizeY << "." << endl;
 	for(long unsigned int i = 0; i < t.grille.size(); i++) {

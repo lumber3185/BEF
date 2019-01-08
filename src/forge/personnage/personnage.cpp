@@ -52,6 +52,7 @@ void personnage::changerOrientation(int orientation){
     this->orientation = orientation;
 };
 
+//le personnage se déplace dans la direction dans laquelle il regarde
 int personnage::mouv(Terrain& t){
     int deplace = 0;
     switch(orientation){
@@ -124,6 +125,7 @@ int personnage::mouv(Terrain& t){
     return deplace;
 };
 
+//ramasse l'arme devant le personnage si il y en a une
 int personnage::ramasser(Terrain& t){
     switch(orientation){
         case 0:
@@ -182,8 +184,13 @@ int personnage::ramasser(Terrain& t){
     return 0;
 };
 
+//applique les dégats de l'arme sur tous les objets présents sur la portée de l'arme
 int personnage::tir(Terrain& t){
 	for(int i=1; i <= a->getPortee(); i++) {
+		//si le personnage n'a pas assez de vie pour tirer il ne tire pas
+		if(pdv <= a->getForce()+1)
+			return 0;
+		pdv -= a->getForce(); //l'arme inflige aussi des dégats au personnage
 		switch(orientation) {
 		case 0:
 			if(t.getEntite(x,y+i) != nullptr) {

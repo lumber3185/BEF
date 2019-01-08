@@ -21,6 +21,7 @@ class Terrain {
 		vector< vector< shared_ptr<entite> > > grille;
 	public:
 
+		//L'utilisation d'un template permet d'ajouter tout type d'objet (arme, obstacle, ...) dans la matrice
 		template<class T>
 		void ajoutEntite(T& nouv, int i, int j) {
 			if(i < SizeX && i > 0 && j < SizeY && j > 0) {
