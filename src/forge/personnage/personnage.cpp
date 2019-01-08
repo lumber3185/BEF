@@ -51,7 +51,6 @@ void personnage::changerOrientation(int orientation){
 
 int personnage::mouv(Terrain& t){
     int deplace = 0;
-    cout << "mouv";
     switch(orientation){
         case personnage::nord:
             if(t.getEntite(x,y+1) == nullptr){

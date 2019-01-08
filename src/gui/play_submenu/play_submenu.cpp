@@ -31,7 +31,7 @@ void Play_submenu::event_handler(sf::Event event, Terrain &t, Worldgui &worldgui
     string filename;
     switch (event.key.code){
         case sf::Keyboard::L :{
-            std::cout << "Enter name of file to load" << std::endl;
+            std::cout << "Enter name of file to load :" << std::endl;
             std::cin >> filename;
             FileManager f(filename, "terrain");
             try{
@@ -54,7 +54,6 @@ void Play_submenu::event_handler(sf::Event event, Terrain &t, Worldgui &worldgui
             worldgui.set_IAOn(0);
             break;
         default:
-            std::cout << "default" << std::endl;
             break;
     }
 }

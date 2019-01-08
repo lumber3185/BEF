@@ -122,21 +122,17 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                         switch (p1.getOrientation())
                         {   
                             case personnage::nord:
-                                cout << "looking north" << endl;
                                 objects[x][y].rotate(270.f);
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                             break;
                             case personnage::est:
-                                cout << "looking east" << endl;
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::sud:
-                                cout << "looking south" << endl;
                                 objects[x][y].rotate(90.f);
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::ouest:
-                                cout << "looking ouest" << endl;
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                                 objects[x][y].rotate(180.f);
                             break;
@@ -148,21 +144,17 @@ void Worldgui::draw(sf::RenderWindow &window, Terrain T, personnage p1, personna
                         switch (p2.getOrientation())
                         {   
                             case personnage::nord:
-                                cout << "looking north" << endl;
                                 objects[x][y].rotate(270.f);
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                             break;
                             case personnage::est:
-                                cout << "looking east" << endl;
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*1/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::sud:
-                                cout << "looking south" << endl;
                                 objects[x][y].rotate(90.f);
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*1/4));
                             break;
                             case personnage::ouest:
-                                cout << "looking ouest" << endl;
                                 objects[x][y].setPosition(x*sizeoftile_x+(sizeoftile_x*3/4), y*sizeoftile_y+(sizeoftile_y*3/4));
                                 objects[x][y].rotate(180.f);
                             break;
@@ -184,7 +176,7 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
     switch (event.key.code)
     {
         case sf::Keyboard::Space:
-            std::cout << "pressed space" << std::endl;
+            std::cout << "Tir !" << std::endl;
             if(p1.get_tour() == 1){
                 p1.tir(t);
                 p1.set_tour(0);
@@ -198,47 +190,38 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
             }
             break;
         case sf::Keyboard::Q:
-            std::cout << "pressed ouest" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::ouest);
             }
             else if(p2.get_tour() == 1){
                 p2.changerOrientation(personnage::ouest);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::D:
-            std::cout << "pressed est" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::est);
             }
             else if(p2.get_tour() == 1){
                 p2.changerOrientation(personnage::est);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::Z:
-            std::cout << "pressed north" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::nord);
             }
             else if(p2.get_tour() == 1){
                 p2.changerOrientation(personnage::nord);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::S:
-        std::cout << "pressed south" << std::endl;
             if (p1.get_tour() == 1){
                 p1.changerOrientation(personnage::sud);
             }
             else if(p2.get_tour() == 1){
                 p2.changerOrientation(personnage::sud);
             }
-        cout << p1 << endl;
         break;
         case sf::Keyboard::Enter:
-        std::cout << "moving" << endl;
             if(p1.get_tour() == 1){
                 p1.mouv(t);
                 p1.set_tour(0);
@@ -252,17 +235,14 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, personna
             
         break;
         default:
-            std::cout << "default key pressed" << std::endl;
         break;
     }
-    cout << p1 << "IN EVENT HANDLER" << endl;
 }
 
 void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
     switch (event.key.code)
     {
         case sf::Keyboard::Space:
-            std::cout << "pressed space" << std::endl;
             if(p1.get_tour() == 1){
                 p1.tir(t);
                 p1.set_tour(0);
@@ -270,35 +250,26 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
             }
             break;
         case sf::Keyboard::Q:
-            std::cout << "pressed ouest" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::ouest);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::D:
-            std::cout << "pressed est" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::est);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::Z:
-            std::cout << "pressed north" << std::endl;
             if(p1.get_tour() == 1){
                 p1.changerOrientation(personnage::nord);
             }
-            cout << p1 << endl;
         break;
         case sf::Keyboard::S:
-        std::cout << "pressed south" << std::endl;
             if (p1.get_tour() == 1){
                 p1.changerOrientation(personnage::sud);
             }
-        cout << p1 << endl;
         break;
         case sf::Keyboard::Enter:
-        std::cout << "moving" << endl;
             if(p1.get_tour() == 1){
                 p1.mouv(t);
                 p1.set_tour(0);
@@ -307,10 +278,8 @@ void Worldgui::event_handler(sf::Event event,Terrain &t,personnage &p1, IA &ia){
             
         break;
         default:
-            std::cout << "default key pressed" << std::endl;
         break;
     }
-    cout << p1 << "IN EVENT HANDLER" << endl;
 }
 
 void Worldgui::set_IsOn(bool i){

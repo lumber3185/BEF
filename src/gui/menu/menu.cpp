@@ -81,7 +81,7 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, 
 		case sf::Keyboard::Return:
 			switch (GetPressedItem()){
 			    case 0:
-		            std::cout << "Play button has been pressed" << std::endl;
+		            std::cout << "Play Mode" << std::endl;
                     //action :
                     this->is_on = 0;
                     play_submenu.set_IsOn(1);
@@ -89,19 +89,18 @@ void Menu::event_handler(sf::Event event, Worldgui &worldgui, Editeur &editeur, 
                     editeur.set_IsOn(0);
 					break;
 				case 1:
-					std::cout << "Create button has been pressed" << std::endl;
+					std::cout << "Create Mode" << std::endl;
                     //action :
                     this->is_on = 0;
                     worldgui.set_IsOn(1);
                     editeur.set_IsOn(1);
 					break;
 				case 2:
-					std::cout << "Test button has been pressed" << std::endl;
+					std::cout << "Test  Mode" << std::endl;
                     this->is_on = 0;
                     tests();
                     break;
                 default:
-                    std::cout << "touche inconnue" << std::endl;
                     break;
 			}
             break;

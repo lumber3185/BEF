@@ -56,7 +56,7 @@ void FileManager::loadTerrain(Terrain& tm){
         }
         else throw "trying to load a terrain with a manager not of type terrain \n";
         fichier.close();
-        cout << "closed \n";
+        cout << "Successfully loaded \n";
     }
     else throw "Not a filename to a saved 'terrain'\n";
 }
