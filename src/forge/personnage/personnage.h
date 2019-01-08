@@ -8,19 +8,18 @@
 
 class personnage : public entite {
     private:
+        
+        shared_ptr<arme> a;
         // le personnage garde ses coordonnées, facilite les tests sur le terrain depuis joueur, sinon on aurait besoin de chercher les coordonnées du joueur à chaque fonction pour faire tests
         int x,y;
-        // défaut : 15
-        int pdv;
+        int pdv;// défaut : 15
         bool mon_tour;
-        // 0 nord, 1 est, 2 sud, 3 ouest
-        // int orientation;
-        // défaut : "poing", force = 1, portée=1
-        shared_ptr<arme> a;
+        int orientation;
     public:
         personnage(Terrain& t);
         personnage(Terrain& t, int x, int y);
         ~personnage();
+        // 0 nord, 1 est, 2 sud, 3 ouest
         enum direction
         {
             nord,
@@ -36,7 +35,6 @@ class personnage : public entite {
         int getOrientation();
         void changerOrientation(int orientation);
         int tir(Terrain& t);
-        int orientation;
         // 1 si le personnage a réussi à bouger, 0 sinon
         int mouv(Terrain& t);
 

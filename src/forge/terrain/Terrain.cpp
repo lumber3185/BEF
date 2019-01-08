@@ -33,8 +33,8 @@ shared_ptr<entite> Terrain::getEntite(int x, int y) {
 
 ostream& operator<<(ostream& flux, Terrain &t) {
 	flux << "Dimensions du terrain : " << t.SizeX << ", " << t.SizeY << "." << endl;
-	for(int i = 0; i < t.grille.size(); i++) {
-		for(int j = 0; j < t.grille[i].size(); j++) {
+	for(long unsigned int i = 0; i < t.grille.size(); i++) {
+		for(long unsigned int j = 0; j < t.grille[i].size(); j++) {
 			if(t.grille[i][j] != nullptr)
 				flux << t.grille[i][j]->getType() << " aux coordonnées : " << i << ", " << j << "." << endl;
 		}

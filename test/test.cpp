@@ -1,8 +1,8 @@
 #include "test.hpp"
 
 void tests(){
-    std::cout << "Creation d'un terrain de taille 12 * 12" << endl;
-    Terrain t(12,12);
+    std::cout << "Creation d'un terrain de taille 10 * 10" << endl;
+    Terrain t(10,10);
     cout << t << endl;
     std::cout << "Creation de deux entitées, arbre et pistolet" << endl;
     obstacle o("arbre", 3);
@@ -35,6 +35,9 @@ void tests(){
 	cout << ia << endl;
     std::cout << "Deplacement du joueur" << endl;
     p1.mouv(t);
+    cout << p1 << endl;
+    cout << t << endl;
     std::cout << "Le joueur tire" << endl;
     p1.tir(t);
+    std::cout << "FIN DES TESTS" << endl;
 }
